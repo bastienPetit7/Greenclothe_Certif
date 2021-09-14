@@ -1,0 +1,428 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+
+    <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+
+                    <img src=" {{asset('assets/ressources/img/aviv-rachmadian-7F7kEHj72MQ-unsplash.jpg')}} " class="d-block img-fluid"
+                        alt="...">
+                    <div class="carousel-caption">
+                        <h2 class="carou-caption-title">Summer discount</h2>
+                        <h3 class="carou-caption-sub">Le meilleur de l'été à 40%</h3>
+                        <a  href="collection.htm" type="button" class="btn btn-outline-light btn-lg carou-caption-btn">C'est partie</a>
+
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src=" {{asset('assets/ressources/img/hannah-morgan-ycVFts5Ma4s-unsplash.jpg')}} " class="d-block  img-fluid"
+                        alt="...">
+                </div>
+                <div class="carousel-item">
+                    <img src=" {{asset('assets/ressources/img/keagan-henman-xPJYL0l5Ii8-unsplash (1).jpg')}} " class="d-block  img-fluid"
+                        alt="...">
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Section Jumbotron -->
+
+    <div class="container-fluid">
+        <div class="row jumbotron">
+            <div class="col-4 text-center">
+                <i class="fab fa-pagelines mb-3"></i>
+                <p>Matière écologique</p>
+            </div>
+            <div class="col-4 text-center">
+                <i class="fas fa-recycle mb-3"></i>
+                <p>100% recyclable</p>
+            </div>
+            <div class="col-4 text-center">
+                <i class="fas fa-dove mb-3"></i>
+                <p>Nous protégeons les oiseaux</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Section Card-->
+    <section class="py-5">
+        <div class="container  px-4 px-lg-5 mt-5">
+            <div class="row  justify-content-center my-4">
+
+                <!-- Debut Carte -->
+                <div class="col-md-4 col-sm-6 col-xs-12 mb-5">
+                    <a href="page_produit.htm" class="card-link">
+                        <div class="card h-100  ">
+                            <!-- Product image-->
+                            <img class="card-img-top" src=" {{asset('assets/ressources/img/t-shirt/homme/tshirt_homme_1.jpg')}} "
+                                alt="..." />
+                            <!-- Product details-->
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <!-- Product name-->
+                                    <h5 class="fw-bolder">Fancy Product</h5>
+                                    <!-- Product price-->
+                                    $40.00 - $80.00
+                                </div>
+                            </div>
+                            <!-- Product actions-->
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View
+                                        options</a>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <!-- Fin Carte -->
+
+                <!-- Debut Carte -->
+                <div class="col-md-4 col-sm-6 col-xs-12 mb-5">
+                    <a href="page_produit.htm" class="card-link">
+                    <div class="card  h-100 ">
+                        <!-- Sale badge-->
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
+                        </div>
+                        <!-- Product image-->
+                        <img class="card-img-top" src=" {{ asset('assets/ressources/img/pull_sweat/femme/sweat_femme_1.jpg')}} " alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">Special Item</h5>
+                                <!-- Product reviews-->
+                                <div class="d-flex justify-content-center small text-warning mb-2">
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                </div>
+                                <!-- Product price-->
+                                <span class="text-muted text-decoration-line-through">$20.00</span>
+                                $18.00
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <!-- Fin Carte -->
+
+                <!-- Debut Carte -->
+                <div class="col-md-4 col-sm-6 col-xs-12 mb-5">
+                    <a href="page_produit.htm" class="card-link">
+                    <div class="card  h-100  ">
+                        <!-- Sale badge-->
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
+                        </div>
+                        <!-- Product image-->
+                        <img class="card-img-top" src=" {{asset('assets/ressources/img/chemise/homme/chemise_homme_1.jpg')}} " alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">Sale Item</h5>
+                                <!-- Product price-->
+                                <span class="text-muted text-decoration-line-through">$50.00</span>
+                                $25.00
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <!-- Fin Carte -->
+
+            </div>
+            <div class="row justify-content-center">
+                <!-- Debut Carte -->
+                <div class="col-md-4 col-sm-6 col-xs-12 mb-5">
+                    <a href="page_produit.htm" class="card-link">
+                    <div class="card  h-100 ">
+                        <!-- Sale badge-->
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
+                        </div>
+                        <!-- Product image-->
+                        <img class="card-img-top" src=" {{asset('assets/ressources/img/accessoire/femme/accessoire_femme_1.jpg')}} "
+                            alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">Sale Item</h5>
+                                <!-- Product price-->
+                                <span class="text-muted text-decoration-line-through">$50.00</span>
+                                $25.00
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <!-- Fin Carte -->
+
+
+                <!-- Debut Carte -->
+                <div class="col-md-4 col-sm-6 col-xs-12 mb-5">
+                    <a href="page_produit.htm" class="card-link">
+                    <div class="card  h-100 ">
+                        <!-- Sale badge-->
+                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
+                        </div>
+                        <!-- Product image-->
+                        <img class="card-img-top" src=" {{asset('assets/ressources/img/chaussure/homme/chaussure_homme_1.jpg')}} "
+                            alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">Special Item</h5>
+                                <!-- Product reviews-->
+                                <div class="d-flex justify-content-center small text-warning mb-2">
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                    <div class="bi-star-fill"></div>
+                                </div>
+                                <!-- Product price-->
+                                <span class="text-muted text-decoration-line-through">$20.00</span>
+                                $18.00
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <!-- Fin Carte -->
+
+
+
+                <!-- Debut Carte -->
+                <div class="col-md-4 col-sm-6 col-xs-12 mb-5">
+                    <a href="page_produit.htm" class="card-link">
+                    <div class="card  h-100 ">
+                        <!-- Product image-->
+                        <img class="card-img-top" src=" {{asset('assets/ressources/img/manteau/femme/manteau_femme_1.jpg')}} " alt="..." />
+                        <!-- Product details-->
+                        <div class="card-body p-4">
+                            <div class="text-center">
+                                <!-- Product name-->
+                                <h5 class="fw-bolder">Fancy Product</h5>
+                                <!-- Product price-->
+                                $120.00 - $280.00
+                            </div>
+                        </div>
+                        <!-- Product actions-->
+                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                <!-- Fin Carte -->
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Story Telling -->
+    <section class="perso_bg_orange">
+        <div class="container-fluid py-5">
+            <div class="row text-center">
+                <div class="col-12 mb-4">
+                    <h2 class="titre-story-telling ">marque responsable</h2>
+                </div>
+                <div class="col-12 px-3 mb-3">
+                    <p class="sous-titre-story-telling">Nous vous faisons CONFIANCE pour nous faire CONFIANCE !</p>
+                </div>
+            <div class="row text-center px-3 mt-5">
+                <div class="col-md-4 col-sm-12">
+                    <i class="fab fa-pagelines fa-big mb-5 "></i>
+                    <h3 class="text-white">Matière écologique</h3>
+                    <p class="text-white line-height-plus">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quaerat
+                        maxime est voluptatum animi. Earum quos aliquid quo, voluptatem nostrum odit cumque laudantium
+                        quisquam natus?</p>
+
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <i class="fas fa-recycle fa-big mb-5"></i>
+                    <h3 class="text-white">100% recyclable</h3>
+                    <p class="text-white line-height-plus">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quaerat
+                        maxime est voluptatum animi. Earum quos aliquid quo, voluptatem nostrum odit cumque laudantium
+                        quisquam natus?</p>
+
+                </div>
+                <div class="col-md-4 col-sm-12">
+                    <i class="fas fa-dove fa-big mb-5"></i>
+                    <h3 class="text-white">Nous protégeons les oiseaux</h3>
+                    <p class="text-white line-height-plus">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quaerat
+                        maxime est voluptatum animi. Earum quos aliquid quo, voluptatem nostrum odit cumque laudantium
+                        quisquam natus?</p>
+
+                </div>
+            </div>
+            </div>
+            <div class="row text-center py-5">
+                <div class="col-12">
+                    <button class="btn btn-outline-light p-3 px-5 rounded-pill" >contactez-nous</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section save birds -->
+    <section class="perso_bg_blue-green text-center text-white py-5">
+        <div class="container-fluide p-3">
+            <div class="row ">
+                <div class="col-12 display-2 ">
+                    <p class="h2 impact mb-5 ">nous ne sauvons pas encore les <i class="fas fa-fish"></i> mais</p>
+                    <p class="h2 impact mb-4">nous nous efforcons d'aider les <i class="fas fa-dove mb-3"></i></p>
+                    <p class="txt-bird-support mt-2">pour chaque commande passé 10 oiseaux de parainnées</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Parallax -->
+    <div class="parallax"></div>
+
+
+    <!-- Section Qui sommes nous  -->
+    <section>
+        <div class="container-fluid py-4">
+            <div class="row px-3 text-center">
+               
+                <div class="col-10 col-md-12 mx-auto ">
+                    <h2 class="titre-about-us">marque française responssable</h2>
+                </div>
+                
+                <div id="carouselExampleControlsNoTouching" class="carousel carou-2 slide mx-auto mt-5" data-touch="false"
+                    data-interval="false" >
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="overlay"></div>
+                            <img src=" {{asset('assets/ressources/img/forest_parallax.jpg')}} " class="d-block w-100" alt="...">
+                            <div class="carousel-caption">
+                                <h2 class="carou-caption-title">Greenclothe participe</h2>
+                                <h3 class="carou-caption-sub">luttons ensemble pour le recyclage participatif</h3>
+                                <button type="button" class="btn btn-outline-light  carou-caption-btn rounded-pill px-4 mt-3">en savoir plus</button>
+        
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="overlay"></div>
+                            <img src=" {{asset('assets/ressources/img/Valeurs/bike_delivery.jpg')}} " class="d-block w-100" alt="...">
+                            <div class="carousel-caption">
+                                <h2 class="carou-caption-title">Livraison à vélo</h2>
+                                <h3 class="carou-caption-sub">un circuit cours avec moins de 0,4% d'émission de CO2</h3>
+                                <button type="button" class="btn btn-outline-light carou-caption-btn rounded-pill px-4 mt-3 ">en savoir plus</button>
+        
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="overlay"></div>
+                            <img src=" {{asset('assets/ressources/img/Valeurs/manif_eco_2.jpg')}} " class="d-block w-100" alt="...">
+                            <div class="carousel-caption">
+                                <h2 class="carou-caption-title">Greenclothe soutient</h2>
+                                <h3 class="carou-caption-sub">ensemble vers un monde responsable</h3>
+                                <button type="button" class="btn btn-outline-light carou-caption-btn rounded-pill px-4 mt-3 ">en savoir plus</button>
+        
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControlsNoTouching" role="button"
+                        data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleControlsNoTouching" role="button"
+                        data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+
+            </div>
+            <div class="row px-2 text-center mt-3 py-5">
+                <div class="col-12">
+                    <h3>Un engagement quotidien pour une planete propre</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis ipsa labore possimus eius illum voluptatum? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam, minus.</p>
+                    <br>
+                    <h3>Vêtements recyclés : une mode responsable et éthique</h3>
+                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. At enim commodi unde tenetur minus quasi repudiandae repellendus deserunt quae sunt, quisquam, illo, tempore dolores? Iure accusamus est in?</p>
+                    <br>
+                    <h3>Livraison à vélo dans toute l'île de France </h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam aspernatur expedita nam dolore delectus accusantium explicabo hic officiis. Velit, commodi.</p>
+                    <button class="btn btn-lg btn-perso perso_bg_orange mt-4">toute notre histoire</button>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Jumbotron Insta -->
+    <div class="container-fluid">
+        <div class="row jumbotron">
+            <div class="col-12 text-center">
+                <h3>Suivez-nous sur Instagrame</h3>
+                <p style="font-family: 'Damion', sans-serif; font-size: 2rem;">@greenclothe</p>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- Section Promesse  -->
+    <div class="container-fluide">
+        <div class="row no-gutters text-center">
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <i class="fas fa-biking"></i>
+                <h3 class="perso_orange">livraison à vélo offerte</h3>
+                <p>sans minimum d'achat</p>
+            </div>
+            <div class="col-md-4 col-sm-6 col-xs-12">
+                <i class="fas fa-reply"></i>
+                <h3 class="perso_orange">échange et retour gratuit</h3>
+                <p>même depuis votre boîte aux lettres</p>
+            </div>
+            <div class="col-md-4 col-sm-12 ">
+                <i class="fas fa-lock"></i>
+                <h3 class="perso_orange">paiement sécurisé</h3>
+                <p>Visa, Mastercard, Paypal</p>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
