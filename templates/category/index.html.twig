@@ -21,7 +21,7 @@
                 <td>{{ category.id }}</td>
                 <td>{{ category.name }}</td>
                 <td>{{ category.description }}</td>
-                <td>{{ category.imagePathUrl }}</td>
+                <td> <img src="{{ asset(category.imagePathUrl) }}" alt="" style="height:300px;object-fit:contain;" ></td>
                 <td>
                     <a href="{{ path('category_show', {'id': category.id}) }}">show</a>
                     <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>

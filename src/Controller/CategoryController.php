@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 /**
  * @Route("/category")
@@ -28,13 +29,36 @@ class CategoryController extends AbstractController
     /**
      * @Route("/new", name="category_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, SluggerInterface $slugger): Response
     {
         $category = new Category();
         $form = $this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $dataImage = $form->get('image_path_url')->getData(); 
+
+            if($dataImage)
+            {
+
+                $originalFileName = pathinfo( $dataImage->getClientOriginalName(), PATHINFO_FILENAME); 
+                $safeFileName = $slugger->slug($originalFileName); 
+                $newFileName= $safeFileName . '-' . uniqid() . '.' . $dataImage->guessExtension(); 
+
+                $dataImage->move(
+                    $this->getParameter('app_images_directory_category'),
+                    $newFileName
+                ); 
+
+                $category->setImagePathUrl('/assets/ressources/img/uploads/category/' . $newFileName );
+
+
+            }
+
+
+
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($category);
             $entityManager->flush();

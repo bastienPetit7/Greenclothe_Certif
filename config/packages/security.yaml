@@ -5,7 +5,7 @@ security:
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
         App\Entity\User:
-            algorithm: auto
+            algorithm: argon
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:

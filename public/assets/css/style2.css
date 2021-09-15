@@ -841,6 +841,10 @@ h3{
       border: 1px solid var(--main-orange);
   }
   
+  .checkbox-type{
+      font-size: 12px;
+  }
+
   .register-form-container button {
       display: flex;
       justify-content: center;
@@ -858,6 +862,7 @@ h3{
       margin-top: 5px;
       padding: 20px;
       cursor: pointer;
+      transition: all 0.4s ease-in-out;
   }
   
   .register-form-container  button:hover {

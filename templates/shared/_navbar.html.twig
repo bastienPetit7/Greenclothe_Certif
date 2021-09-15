@@ -1,5 +1,5 @@
     <nav class="navbar d-flex navbar-expand-lg bg-white sticky-top navbar-light ">
-        <a class="navbar-brand" id="logo" href="index.htm" title="Retour Accueil">Greenclothe
+        <a class="navbar-brand" id="logo" href=" {{path('home')}}" title="Retour Accueil">Greenclothe
             <!-- <img src="/ressources/logo/logo_small.png" class="img-fluid logo" alt=""> -->
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -39,6 +39,32 @@
                 <li class="nav-item">
                     <a class="nav-link " href="#" tabindex="-1" aria-disabled="true" title="Espace blog">Le journal</a>
                 </li>
+
+                {% if app.user %}
+                    {% if app.user.roles[0] is same as "ROLE_ADMIN" %}
+                    
+                        <li class="nav-item dropdown dropdown-megamenu">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Liste des produits">
+                                Administrateur
+                            </a>
+                            <div class="dropdown-menu " aria-labelledby="navbarDropdown">
+
+                                <a class="dropdown-item " href=" {{path('product_index')}} ">Les produits</a>
+                                <a class="dropdown-item" href="{{path('product_new')}}">Ajouter un produit</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{{path('category_index')}}">Les catégories</a>
+                                <a class="dropdown-item" href="{{path('category_new')}}">Ajouter une catégorie</a>
+                            
+                            </div>
+                        </li>
+                    
+                    {% endif %}
+                
+                {% endif %}
+
+
+
             </ul>
             <ul class="navbar-right my-auto">
                 <a href="#" class="nav-link" title="Rechercher un article">
@@ -49,7 +75,7 @@
                 </a>
             </ul>
             <ul class="navbar-right my-auto">
-                <a href="login.htm" class="nav-link" title="Espace utilisateur">
+                <a href=" {{path('app_login')}} " class="nav-link" title="Espace utilisateur">
                     <i class="fas fa-user"></i>
                     <span class="span-burger-menu ml-1">Mon compte</span>
 

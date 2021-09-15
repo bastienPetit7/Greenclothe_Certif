@@ -2,11 +2,14 @@
 
 namespace App\Entity;
 
-use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProductRepository;
+use DateTime;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
+ * @ORM\HasLifecycleCallbacks
  */
 class Product
 {
@@ -41,6 +44,23 @@ class Product
      * @ORM\Column(type="datetime")
      */
     private $created_at;
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function prePersist()
+    {
+        if(empty($this->created_at))
+        {
+            $this->created_at = new DateTime();
+        }
+    }
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $category;
 
     public function getId(): ?int
     {
@@ -103,6 +123,18 @@ class Product
     public function setCreatedAt(\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Category $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }

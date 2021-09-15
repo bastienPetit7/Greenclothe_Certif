@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Log in!{% endblock %}
+{% block title %}Espace Utilisateur{% endblock %}
 
 {% block body %}
 
- <section>
+     <section>
 
         <!-- ------ Titre ------ -->
         <div class="container-fluid ">
@@ -32,16 +32,16 @@
                             <p class=" perso_blue-green ">Inscrivez-vous pour faire partie de la famille Greenclothe</p>
                         </div>
 
-                        <form class="form-mail-new-login d-flex flex-column align-items-center" method="post" >
+                        <form class="form-mail-new-login d-flex flex-column ">
                             <label for="mailNewClient"></label>
                             <input type="mail" id="mailNewClient" placeholder="Adress mail" required>
 
 
-                            <div class="btn-mail-new-login ">
-                                <a type="button" href=" {{path('app_register')}} " class="btn btn-warning btn-lg px-4 rounded-pill p-2 text-uppercase">
-                                    créer un compte</a>
-                            </div>
                         </form>
+                        <div class="btn-mail-new-login ">
+                            <a type="button" href="register.htm" class="btn btn-warning btn-lg px-4 rounded-pill p-2 text-uppercase">
+                                créer un compte</a>
+                        </div>
                     </div>
                 </div>
        
@@ -58,37 +58,17 @@
                         </div>
 
 
-                        <form class="form-mail-new-login d-flex flex-column align-items-center " method="post">
-                            {% if error %}
-                                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-                            {% endif %}
+                        <form class="form-mail-new-login d-flex flex-column align-items-center ">
+                            <label for="mailLoginClient"></label>
+                            <input type="mail" id="mailLoginClient" placeholder="Adress mail" required>
+                            <label for="passwordLoginClient"></label>
+                            <input type="mail" id="passwordLoginClient" placeholder="Password" required>
 
-        
-                                <label for="inputEmail"></label>
-                                <input type="mail" value="{{ last_username }}" name="email" autocomplete="email"  id="inputEmail" placeholder="Adress mail" required autofocus>
-                                <label for="inputPassword"></label>
-                                <input type="password" name="password" id="inputPassword" placeholder="Password" autocomplete="current-password" required>
-
-                                <input type="hidden" name="_csrf_token"
-                                        value="{{ csrf_token('authenticate') }}"
-                                >
-
-                                    {#
-                                        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-                                        See https://symfony.com/doc/current/security/remember_me.html
-
-                                        <div class="checkbox mb-3">
-                                            <label>
-                                                <input type="checkbox" name="_remember_me"> Remember me
-                                            </label>
-                                        </div>
-                                    #}
-
-                                <div class="btn-mail-new-login ">
-                                    <button type="submit" class="btn btn-warning btn-lg px-4 rounded-pill p-2 text-uppercase">
-                                        identifiez-vous</button>
-                                </div>
-                                
+                        <div class="btn-mail-new-login ">
+                            
+                            <a href="mon_compte_dashBoard.htm" type="submit" class="btn btn-warning btn-lg px-4 rounded-pill p-2 text-uppercase">
+                                identifiez-vous</a>
+                        </div>
                         </form>
                     </div>
                 </div>
@@ -115,10 +95,5 @@
         </div>
 
     </section>
-
-
-
-
-
 
 {% endblock %}
