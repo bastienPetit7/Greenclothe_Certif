@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ProductRepository;
-use DateTime;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=ProductRepository::class)
@@ -38,7 +40,7 @@ class Product
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $image_path_url;
+    private $image;
 
     /**
      * @ORM\Column(type="datetime")
@@ -57,10 +59,30 @@ class Product
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="products")
+     * @ORM\ManyToMany(targetEntity=Category::class, inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $subtitle;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $isBest;
+
+    public function __construct()
+    {
+        $this->category = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -103,14 +125,14 @@ class Product
         return $this;
     }
 
-    public function getImagePathUrl(): ?string
+    public function getImage(): ?string
     {
-        return $this->image_path_url;
+        return $this->image;
     }
 
-    public function setImagePathUrl(string $image_path_url): self
+    public function setImage(string $image): self
     {
-        $this->image_path_url = $image_path_url;
+        $this->image = $image;
 
         return $this;
     }
@@ -127,14 +149,63 @@ class Product
         return $this;
     }
 
-    public function getCategory(): ?Category
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    public function getSubtitle(): ?string
+    {
+        return $this->subtitle;
+    }
+
+    public function setSubtitle(string $subtitle): self
+    {
+        $this->subtitle = $subtitle;
+
+        return $this;
+    }
+
+    public function getIsBest(): ?bool
+    {
+        return $this->isBest;
+    }
+
+    public function setIsBest(bool $isBest): self
+    {
+        $this->isBest = $isBest;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Category[]
+     */
+    public function getCategory(): Collection
     {
         return $this->category;
     }
 
-    public function setCategory(?Category $category): self
+    public function addCategory(Category $category): self
     {
-        $this->category = $category;
+        if (!$this->category->contains($category)) {
+            $this->category[] = $category;
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Category $category): self
+    {
+        $this->category->removeElement($category);
 
         return $this;
     }

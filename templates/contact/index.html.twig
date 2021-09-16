@@ -4,13 +4,36 @@
 
 {% block body %}
 
-    {{form_start(form)}}
 
-    {{form_widget(form)}}
 
-    <button type="submit">Envoyer</button>
+    <div class="container my-5">
+        <div class="row ">
 
-    {{form_end(form)}}
+
+            <div class="card-collection col-12 p-5" style="border: 1px solid grey">
+            {% include "shared/_messages_flash.html.twig" %}
+
+                <div class="card-header">
+                    <h3>Contactez nous</h3>
+                </div>
+                <div class="card-body">
+
+                   {{form_start(form)}}
+
+                    {{form_widget(form)}}
+
+                    <button type="submit">Envoyer</button>
+
+                    {{form_end(form)}}
+
+                </div>
+
+            </div>
+        
+        </div>
+    </div>
+
+   
 
 
 

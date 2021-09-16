@@ -21,8 +21,10 @@ class ProductController extends AbstractController
      */
     public function index(ProductRepository $productRepository): Response
     {
+        $products = $productRepository->findAll();
+
         return $this->render('product/index.html.twig', [
-            'products' => $productRepository->findAll(),
+            'products' => $products
         ]);
     }
 
@@ -37,7 +39,7 @@ class ProductController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $dataImage = $form->get('image_path_url')->getData(); 
+            $dataImage = $form->get('image')->getData(); 
 
             if($dataImage)
             {
@@ -50,7 +52,7 @@ class ProductController extends AbstractController
                     $newFileName
                 ); 
 
-                $product -> setImagePathUrl('/assets/ressources/img/uploads/products/'. $newFileName);
+                $product -> setImage('/assets/ressources/img/uploads/products/'. $newFileName);
 
             }
 

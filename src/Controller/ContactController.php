@@ -40,6 +40,8 @@ class ContactController extends AbstractController
 
             $mailer->send($contactEmail); 
 
+            $this->addFlash('success', 'Votre message a bien été envoyé à la famille Greenclothe'); 
+
             return $this->redirectToRoute("contact"); 
         }
 

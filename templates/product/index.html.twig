@@ -3,41 +3,76 @@
 {% block title %}Product index{% endblock %}
 
 {% block body %}
-    <h1>Liste des produits</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>Image_path_url</th>
-                <th>Created_at</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for product in products %}
-            <tr>
-                <td>{{ product.id }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ product.description }}</td>
-                <td>{{ product.price }}</td>
-                <td>{{ product.imagePathUrl }}</td>
-                <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>
-                    <a href="{{ path('product_show', {'id': product.id}) }}">show</a>
-                    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+<!-- ================== Page Collection ===================== -->
 
-    <a href="{{ path('product_new') }}">Create new</a>
+        <div class="container-fluid d-flex justify-content-center align-items-center">
+            <div class="row cont-collection-title px-3 ">
+                <div class="col-12 text-center  my-4 py-2">
+                    <h2 class="text-uppercase titre-collection mb-3"> Toute la collection</h2>
+                    <p>Voici l’ensemble de notre collection: des vêtements, chaussures et accessoires pour homme produits à moins de 2000kms dans de belles matières et toujours avec un petit détail qui fait la différence.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- --------- Espace carte produit -------------- -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center align-items-center body-collection mb-5">
+                    <div class="container-collection">
+
+
+                        {% for product in products %}
+                            
+                        
+                            <!-- Debut carte -->
+                            <div class="card-collection">
+                                <div class="img-box">
+                                    <img src="/assets/ressources/img/uploads/products/{{product.image}}" alt="{{product.name}}">
+                                    <ul class="action">
+                                        <li>
+                                            <i class="fa fa-heart" aria-hidden="true"></i>
+                                            <span>Add to Wishlist</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                            <span>Add to cart</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                            <span>View Details</span>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                                <div class="content-card-collection">
+                                    <div class="product-name-collection">
+                                        <h3> {{product.subtitle}} </h3>
+                                    </div>
+                                    <div class="price-rating">
+                                        <h2> {{product.price | amount}} </h2>
+                                    
+                                        <div class="rating">
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa grey fa-star" aria-hidden="true"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fin Carte -->
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
 {% endblock %}

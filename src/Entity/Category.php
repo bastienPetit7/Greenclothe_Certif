@@ -109,7 +109,7 @@ class Category
         return $this;
     }
 
-    /**
+     /**
      * @return Collection|Product[]
      */
     public function getProducts(): Collection
@@ -121,7 +121,7 @@ class Category
     {
         if (!$this->products->contains($product)) {
             $this->products[] = $product;
-            $product->setCategory($this);
+            $product->addCategory($this);
         }
 
         return $this;
@@ -130,10 +130,7 @@ class Category
     public function removeProduct(Product $product): self
     {
         if ($this->products->removeElement($product)) {
-            // set the owning side to null (unless already changed)
-            if ($product->getCategory() === $this) {
-                $product->setCategory(null);
-            }
+            $product->removeCategory($this);
         }
 
         return $this;

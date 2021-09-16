@@ -42,10 +42,14 @@
 
                 {% if app.user %}
                     {% if app.user.roles[0] is same as "ROLE_ADMIN" %}
+
+                        <li class="nav-item">
+                            <a class="nav-link " href=" {{path('admin')}} " tabindex="-1" aria-disabled="true" title="Espace Admin">Admin</a>
+                        </li>
                     
                         <li class="nav-item dropdown dropdown-megamenu">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Liste des produits">
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Administration ">
                                 Administrateur
                             </a>
                             <div class="dropdown-menu " aria-labelledby="navbarDropdown">

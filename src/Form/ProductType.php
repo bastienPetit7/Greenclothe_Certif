@@ -33,9 +33,9 @@ class ProductType extends AbstractType
             ->add('price', MoneyType::class, [
                 'currency'=>"EUR",
                 "divisor"=> 100,
-                'label' => "Prix du Journal", 
+                'label' => "Prix du Produit", 
                 'attr'=>[
-                    "placeholder" => "Entrer le prix du Journal"
+                    "placeholder" => "Entrer le prix du Produit"
                 ]
             ])
             ->add('image_path_url', FileType::class)
