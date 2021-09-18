@@ -1,0 +1,25 @@
+
+    <div class="container-fluid  pad-5 ">
+        <!-- Header Tableau de bord Mon compte -->
+        <div class="row main-menu-profil ">
+
+            <div class=" col-12 block-top-account py-0">
+                <div class="block-title-account text-center py-2 ">
+                    <i class="fas fa-chevron-right chevron-dropDown" id="chevronDropdown"></i>
+                    <h1>mon compte</h1>
+                </div>
+            </div>
+            <div class=" block-content" >
+                <ul class="menu-account" id="menuAcount">
+                    <li class="current"><a href=" {{path('account')}} ">tableau de bord</a></li>
+                    <li><a href="">mes commandes</a></li>
+                    <li><a href=" {{path('account_modif_info')}} ">mes informations</a></li>
+                    <li><a href=" {{path('account_modif_address')}} ">mes adresses</a></li>
+                    <li><a href="">mes retours</a></li>
+                    <li><a href="">mes avoirs / réductions</a></li>
+
+                </ul>
+            </div>
+            
+
+        </div>

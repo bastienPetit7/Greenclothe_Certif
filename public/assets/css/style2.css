@@ -275,7 +275,7 @@ h3{
 
 .parallax {
     /* The image used */
-    background-image: url("assets/ressources/img/forest_parallax.jpg");
+    /* background-image: url("ressources/img/forest_parallax.jpg"); */
   
     /* Set a specific height */
     min-height: 200px;
@@ -900,8 +900,17 @@ h3{
 
   /* ===================== Page Collection ===================== */
 
+.cont-top-collection{
+    color: var(--main-marin-blue);
+}
+.cont-top-collection h2{
+    letter-spacing: .1rem;
+}
+.cont-top-collection p{
+    font-size: 0.8rem;
+}
 
-  .cont-collection-title {
+.cont-collection-title {
     color: var(--main-marin-blue);
     
 }
@@ -1105,6 +1114,11 @@ h3{
     display: flex;
     justify-content: space-between;
 
+}
+
+.img-product-show{
+    height: 500px;
+    object-fit: contain;
 }
 
 .small-img-col {
@@ -1430,6 +1444,7 @@ h3{
 .box-content{
     /* Voir box-content Box information */
 }
+
 
 .hidden{
     display: none;

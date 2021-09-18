@@ -1,0 +1,141 @@
+{% extends "base_account.html.twig" %}
+
+{% block body %}
+
+    {{form_start(form)}}
+
+    
+
+
+    
+
+   
+
+            <div class="row box-info-edit flex-column mt-4 justify-content-center ">
+
+                <div class=" box-title-info">
+                    <div class="col-12 ">
+                        <h2 class="py-3">Information du compte</h2>
+                    </div>
+                </div>
+
+            
+
+                <div class="row box-content p-1 justify-content-start ">
+
+                    
+
+                    <div class="col-12 col-lg-6 px-4 d-flex flex-column  perso_blue-green">
+
+                        {{form_widget(form.prenom, {'attr': {'class': 'form-control-sm mb-2'}} )}}
+                        {{form_widget(form.nom, {'attr': {'class': 'form-control-sm mb-2'}})}}
+                        {{form_widget(form.email, {'attr': {'class': 'form-control-sm'}})}}
+
+                        
+                    </div>
+
+                    <div class="col-12 col-lg-6 px-4 mt-5 mt-lg-1 perso_blue-green">
+                        <div class="input-radio-info">
+                            <input type="radio" id="infoMister" checked  name="mr&ms">
+                            <label for="infoMister">Monsieur</label>
+
+                            <input type="radio" id="infoMiss" class="ml-5" name="mr&ms">
+                            <label for="infoMiss">Madame</label>
+                        </div>
+
+                        <div class="birth-date d-flex flex-column ">
+                            <label for="birthday">* votre date d'anniversaire</label>
+                            <div class="select-birthDate">
+                                <select id="birthDay">
+                                    <option value="0">Day</option>
+                                </select>
+                                
+                                <select id="birthMonth">
+                                    <option value="0">Month</option>
+                                </select>
+                                
+                                <select id="birthYear">
+                                    <option value="0">Year</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row box-content p-1 justify-content-start ">
+
+                    <div class="col-12 col-lg-6 px-4 d-flex flex-column perso_blue-green">
+                        {{form_widget(form.old_password)}}
+                    </div>
+
+                </div>
+
+                <div class="row box-content p-1 justify-content-start ">
+
+                    <div class="col-12 px-4 perso_blue_green">
+                        <input type="checkbox" id="changeMdp">
+                        <label for="changeMdp">Modifier le mot de passe</label>
+                    </div>
+
+                </div>
+
+                <div class="new-password hidden" id="newPassword" >
+
+                    <div class=" box-title-info">
+                        <div class="col-12 ">
+                            <h2 class="py-3">Modifier le mot de passe</h2>
+                        </div> 
+                    </div>
+
+                    
+
+                    <div class="row box-content p-1 justify-content-start ">    
+
+                        <div class="col-12 col-lg-6 p-3  d-flex flex-column  perso_blue-green">
+
+                            {{form(form.new_password)}}
+                            
+                            
+                        </div>
+                
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class=" d-flex col-12 box-content  justify-content-between "> 
+        
+                        <div class="ml-2">
+                            <a href=" {{path('account')}} " class="">
+                                <div class="link-retour">
+                                    <i class="fas fa-chevron-left mr-1"></i>
+                                    Retour
+                                </div>
+                            </a>
+                        </div>
+                       
+                        <div class="mr-4">
+        
+                            <button type="submit" class="btn btn-danger text-uppercase rounded-pill  ">sauvegarder</button>
+                        </div>
+        
+                    </div>   
+    
+                </div>
+
+
+
+            
+
+            </div>
+
+
+        {{form_end(form)}}
+
+    </div>
+
+
+
+{% endblock %}

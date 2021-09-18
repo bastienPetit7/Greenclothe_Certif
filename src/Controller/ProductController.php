@@ -2,9 +2,12 @@
 
 namespace App\Controller;
 
+use App\Classe\Search;
 use App\Entity\Product;
 use App\Form\ProductType;
+use App\Form\SearchType;
 use App\Repository\ProductRepository;
+use Doctrine\ORM\EntityManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,14 +20,27 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 class ProductController extends AbstractController
 {
     /**
-     * @Route("/", name="product_index", methods={"GET"})
+     * @Route("/", name="product_index")
      */
-    public function index(ProductRepository $productRepository): Response
+    public function index(ProductRepository $productRepository, Request $request): Response
     {
-        $products = $productRepository->findAll();
+        $search = new Search; 
+        $form = $this->createForm(SearchType::class, $search); 
+
+        $form->handleRequest($request); 
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $products = $productRepository->findWithSearch($search);
+        } else {
+            
+            $products = $productRepository->findAll();
+        }
+
 
         return $this->render('product/index.html.twig', [
-            'products' => $products
+            'products' => $products, 
+            'form' => $form->createView()
         ]);
     }
 
@@ -70,10 +86,12 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="product_show", methods={"GET"})
+     * @Route("/{slug}", name="product_show", methods={"GET"})
      */
-    public function show(Product $product): Response
+    public function show(string $slug, ProductRepository $productRepository): Response
     {
+        $product = $productRepository->findOneBySlug($slug); 
+
         return $this->render('product/show.html.twig', [
             'product' => $product,
         ]);

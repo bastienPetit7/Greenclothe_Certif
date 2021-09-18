@@ -1,0 +1,104 @@
+{% extends 'base_account.html.twig' %}
+
+{% block title %}Hello AccountController!{% endblock %}
+
+{% block body %}
+
+
+
+        <!-- Box Mes informations -->
+        <div class="row box-info flex-column justify-content-center ">
+
+            <div class="row box-title">
+                <div class="col-12">
+                    <h2 class="py-3">Mes informations</h2>
+                </div>
+            </div>
+
+            <div class="row box-content justify-content-start">
+
+                <p class="col-12 col-md-4">M. {{user.prenom}} {{user.nom}} <br> Né(e) le 25 Nov. 1985</p>
+                <p class="col-12 col-md-4">Téléphone : {{user.telephone}}</p>
+                <p class="col-12 col-md-4">{{user.email}} <br>
+                <a href="" class="text-decoration-none ">Modifier le mot de passe</a></p>
+
+
+            </div>
+
+        </div>
+        <div class="row  mt-2">
+            <div class="col-4 offset-8 p-0 text-right ">
+                <a href=" {{path('account_modif_info')}} " type="button" class="btn btn-dark link-modif-infos p-2 perso_radius text-uppercase ">modifier
+                    mes informations</a>
+            </div>
+        </div>
+
+        <!-- Box Mes adresses-->
+        <div class="row box-info-adress flex-column mt-4 justify-content-center ">
+
+            <div class=" box-title-adress">
+                <div class="col-12 ">
+                    <h2 class="py-3">Mes adresses</h2>
+                </div>
+            </div>
+
+            <div class="row box-content p-1 justify-content-start ">
+
+                <div class="col-6 col-md-4 p-3  perso_blue-green">
+                    <h6>Adress de facturation</h6>
+                    <span id="adressFacturation">
+                        Bastien Petit <br>
+                        119 boulevard de Saint-Marcel <br>
+                        75005 Paris
+                    </span>
+                </div>
+
+                <div class="col-6 col-md-4 p-3 perso_blue-green">
+                    <h6>Adress de livraison</h6>
+                    <span id="adressLivraison">
+                        Bastien Petit <br>
+                        119 boulevard de Saint-Marcel <br>
+                        75005 Paris
+                    </span>
+
+                </div>
+
+
+
+            </div>
+
+        </div>
+        <div class="row mt-2">
+            <div class="col-4 offset-8 p-0 text-right ">
+                <a href=" {{path('account_modif_address')}}" type="button"
+                    class="btn btn-dark link-modif-adress p-2 perso_radius text-uppercase ">Gérer mes adresses</a>
+            </div>
+        </div>
+
+        <!-- Box Abonnement -->
+        <div class="row box-info-abonnement mt-4 flex-column justify-content-center ">
+
+            <div class="row box-title-abonnement">
+                <div class="col-12">
+                    <h2 class="py-3">Abonnements</h2>
+                </div>
+            </div>
+
+            <div class="row box-content justify-content-start">
+
+                <div class="col-12 col-md-6">
+                    <input type="checkbox" id="checkBoxNewsletter">
+                    <label for="checkBoxNewsletter">Je souhaite recevoir la newsletter Greenclothe</label>
+                </div>
+
+                <div class="col-12 majeur-only">
+                    <p>En souscrivant à la newsletter, je déclare avoir plus de 16 ans.</p>
+                </div>
+
+            </div>
+
+        </div>
+    
+    </div>
+
+{% endblock %}

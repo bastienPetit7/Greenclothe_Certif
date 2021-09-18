@@ -4,11 +4,24 @@
 
 {% block body %}
 
+
+   
+
+       
 <!-- ================== Page Collection ===================== -->
 
-        <div class="container-fluid d-flex justify-content-center align-items-center">
-            <div class="row cont-collection-title px-3 ">
-                <div class="col-12 text-center  my-4 py-2">
+        <div class="container-fluid">
+            <div class="row cont-top-collection px-3 ">
+                <div class="col-3 align-items-center d-flex ">
+                    <a href=" {{ path('home')}} " class=" text-decoration-none ">
+                        <div
+                            class="cont-retour-achat d-flex align-items-center justify-content-center px-2">
+                            <i class="fas fa-caret-left mr-1 "></i>
+                            <span class="py-2 font-weight-bold ">Retours à l'accueil</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-9 text-center mb-4 mt-2 py-2">
                     <h2 class="text-uppercase titre-collection mb-3"> Toute la collection</h2>
                     <p>Voici l’ensemble de notre collection: des vêtements, chaussures et accessoires pour homme produits à moins de 2000kms dans de belles matières et toujours avec un petit détail qui fait la différence.</p>
                 </div>
@@ -17,8 +30,14 @@
 
         <!-- --------- Espace carte produit -------------- -->
         <div class="container-fluid">
+
             <div class="row">
-                <div class="col-12 d-flex justify-content-center align-items-center body-collection mb-5">
+
+                <div class="col-3">
+                    {{form(form)}}
+                </div>
+
+                <div class="col-9 d-flex justify-content-center align-items-center body-collection mb-5">
                     <div class="container-collection">
 
 
@@ -39,8 +58,10 @@
                                             <span>Add to cart</span>
                                         </li>
                                         <li>
+                                        <a href=" {{ path('product_show',{'slug': product.slug })}}" class="text-dark">
                                             <i class="fa fa-eye" aria-hidden="true"></i>
                                             <span>View Details</span>
+                                        </a>
                                         </li>
                                         
                                     </ul>

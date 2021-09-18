@@ -3,40 +3,64 @@
 {% block title %}Product{% endblock %}
 
 {% block body %}
-    <h1>Product</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ product.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ product.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ product.description }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ product.price }}</td>
-            </tr>
-            <tr>
-                <th>Image_path_url</th>
-                <td>{{ product.imagePathUrl }}</td>
-            </tr>
-            <tr>
-                <th>Created_at</th>
-                <td>{{ product.createdAt ? product.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-        </tbody>
-    </table>
+ <div class="container-fluid  ">
+        <div class="row mt-4 ">
+            <div class="col-sm-3 p-0 d-flex  ml-4 ">
+                <a href=" {{ path('product_index')}} " class=" text-decoration-none ">
+                    <div
+                        class="cont-retour-achat d-flex align-items-center justify-content-center px-2">
+                        <i class="fas fa-caret-left mr-1 "></i>
+                        <span class="py-2 font-weight-bold ">Retours aux articles</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 
-    <a href="{{ path('product_index') }}">back to list</a>
+<section class=" container single-product mb-5 pt-5">
+        <div class="row ">
+            <div class="col-lg-6 col-md-12 col-12">
+                <img src="/assets/ressources/img/uploads/products/{{product.image}}" class="img-fluid w-100 pb-1 img-product-show" style="height: 500px;
+    object-fit: contain;" id="mainImgProduct" alt="">
+                <div class="small-img-groupe">
+                    <div class="small-img-col">
+                        <img src="ressources/img/shop/1.jpg" class="small-img" width="100%" alt="">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="ressources/img/shop/24.jpg" class="small-img" width="100%" alt="">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="ressources/img/shop/25.jpg" class="small-img" width="100%" alt="">
+                    </div>
+                    <div class="small-img-col">
+                        <img src="ressources/img/shop/26.jpg" class="small-img" width="100%" alt="">
+                    </div>
+                </div>
 
-    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
+            </div>
 
-    {{ include('product/_delete_form.html.twig') }}
+            <div class="col-lg-5 col-md-12 col-12 mt-lg-0 mt-5 text-sm-left text-right my-auto ">
+                {# <h6> Home / T-shirt</h6> #}
+                <h3 class="py-4 h1 perso_blue-green"> {{product.Name}}</h3>
+                <h3>{{product.price | amount}}</h3>
+                <select class="my-3">
+                    <option> Taille</option>
+                    <option value="XL">XL</option>
+                    <option value="L">L</option>
+                    <option value="M">M</option>
+                    <option value="S">S</option>
+                </select>
+                <input type="number" value="1" >
+                <button class="buy-btn btn btn-warning">Add to Cart</button>
+                <h4 class="mt-5 mb-5">{{product.subtitle}}</h4>
+                <span>{{product.description}}</span>
+            </div>
+
+        </div>
+    </section>
+
+
+
+
 {% endblock %}
