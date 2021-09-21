@@ -30,11 +30,10 @@ class AccountModifInfoType extends AbstractType
                 'disabled'=> true
             ])
             ->add('old_password', PasswordType::class, [
-                
-                'label' => 'Mot de passe',
-                'mapped' => false, 
+                'mapped' => false,
+                'label' => 'Mot de passe*', 
                 'attr' => [
-                    'placeholder' => 'mot de passe',
+                    'placeholder' => 'mot de passe*',
                     'class' => 'form-control-sm'
                 ]
                 
@@ -44,7 +43,7 @@ class AccountModifInfoType extends AbstractType
                 'mapped' => false, 
                 'invalid_message' => 'Le mot de passe et la confirmation doivent être identique', 
                 'label' => 'Mon nouveau mot de passe', 
-                'required' => true, 
+                'required' => false, 
                 'first_options' => [
                     'label' => 'Nouveau mot de passe *',
                     'attr' => [

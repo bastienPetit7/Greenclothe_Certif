@@ -2,6 +2,12 @@
 
 {% block body %}
 
+
+    {% if notification %}
+        <div class="alert alert-info"> {{notification}} </div>
+    
+    {% endif %}
+
     {{form_start(form)}}
 
     
@@ -94,7 +100,7 @@
 
                         <div class="col-12 col-lg-6 p-3  d-flex flex-column  perso_blue-green">
 
-                            {{form(form.new_password)}}
+                            {{form_widget(form.new_password, {'attr': {'id': 'newPwd'}})}}
                             
                             
                         </div>

@@ -49,6 +49,19 @@ class ProductRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult(); 
     }
 
+    public function findWithNavbar(int $id)
+    {
+
+        $query = $this
+            ->createQueryBuilder('p')
+            ->select('c', 'p')
+            ->join('p.category', 'c') 
+            ->andWhere('c.id = :id')
+            ->setParameter('id', $id ); 
+
+        return $query->getQuery()->getResult(); 
+    }
+
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */

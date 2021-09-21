@@ -1,34 +1,88 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Category{% endblock %}
+{% block title %}Categorie index{% endblock %}
 
 {% block body %}
-    <h1>Category</h1>
+  
+        <div class="container-fluid">
+            <div class="row cont-top-collection px-3 ">
+                <div class="col-12 align-items-start d-flex ">
+                    <a href=" {{ path('product_index')}} " class=" text-decoration-none ">
+                        <div
+                            class="cont-retour-achat d-flex align-items-center justify-content-center px-2">
+                            <i class="fas fa-caret-left mr-1 "></i>
+                            <span class="py-2 font-weight-bold ">Retours à la collection</span>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-12 text-center mb-4 mt-2 py-2">
+                    <h2 class="text-uppercase titre-collection mb-3"> {{category.name}} </h2>
+                    <p> {{category.description}}</p>
+                </div>
+            </div>
+        </div>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ category.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ category.name }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ category.description }}</td>
-            </tr>
-            <tr>
-                <th>Image_path_url</th>
-                <td>{{ category.imagePathUrl }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-    <a href="{{ path('category_index') }}">back to list</a>
+        <div class="container-fluid">
 
-    <a href="{{ path('category_edit', {'id': category.id}) }}">edit</a>
+            <div class="row">
+                
 
-    {{ include('category/_delete_form.html.twig') }}
+                <div class="col-12 d-flex justify-content-center align-items-center body-collection mb-5">
+                    <div class="container-collection">
+
+
+                        {% for product in products %}
+                            
+                        
+                            <!-- Debut carte -->
+                            <div class="card-collection">
+                                <div class="img-box">
+                                    <img src="/assets/ressources/img/uploads/products/{{product.image}}" alt="{{product.name}}">
+                                    <ul class="action">
+                                        <li>
+                                            <i class="fa fa-heart" aria-hidden="true"></i>
+                                            <span>Add to Wishlist</span>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                            <span>Add to cart</span>
+                                        </li>
+                                        <li>
+                                        <a href=" {{ path('product_show',{'slug': product.slug })}}" class="text-dark">
+                                            <i class="fa fa-eye" aria-hidden="true"></i>
+                                            <span>View Details</span>
+                                        </a>
+                                        </li>
+                                        
+                                    </ul>
+                                </div>
+                                <div class="content-card-collection">
+                                    <div class="product-name-collection">
+                                        <h3> {{product.subtitle}} </h3>
+                                    </div>
+                                    <div class="price-rating">
+                                        <h2> {{product.price | amount}} </h2>
+                                    
+                                        <div class="rating">
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa fa-star" aria-hidden="true"></i>
+                                            <i class="fa grey fa-star" aria-hidden="true"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Fin Carte -->
+
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+   
+
 {% endblock %}
