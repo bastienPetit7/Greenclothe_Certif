@@ -44,10 +44,12 @@
                                             <i class="fa fa-heart" aria-hidden="true"></i>
                                             <span>Add to Wishlist</span>
                                         </li>
-                                        <li>
-                                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                            <span>Add to cart</span>
-                                        </li>
+                                         <a href=" {{path('ajouter_panier', {'id' : product.id})}} " class="text-dark">
+                                            <li>
+                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                <span>Add to cart</span>
+                                            </li>
+                                        </a>
                                         <li>
                                         <a href=" {{ path('product_show',{'slug': product.slug })}}" class="text-dark">
                                             <i class="fa fa-eye" aria-hidden="true"></i>

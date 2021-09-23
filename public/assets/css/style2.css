@@ -466,6 +466,7 @@ h3{
 }
 .le-panier{
     border: 1px solid var(--main-orange);
+    height:max-content;
 
 }
 
@@ -482,8 +483,8 @@ h3{
 }
 
 .img-product-panier{
-    width: auto;
-    height: 130px;
+    width: 30%;
+    height: 160px;
     
 }
 
@@ -549,7 +550,11 @@ h3{
 
 .sous-total-cont{
     position: relative;
-    top: -5px;
+    /* top: -5px; */
+}
+
+.prix-sous-total-title{
+    font-size: 0.8rem !important ;
 }
 
 .prix-sous-total{
@@ -655,6 +660,11 @@ h3{
 
     .product-name{
         font-size: 1rem;
+    }
+    .img-product-panier{
+        width: 200px;
+        height: 160px;
+        
     }
     .taille-option-title{
         font-size: .9rem;

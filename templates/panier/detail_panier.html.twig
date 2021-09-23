@@ -1,0 +1,196 @@
+{% extends "base.html.twig" %}
+
+
+{% block body %}
+
+<Section>
+        <div class="container-fluid p-4">
+            <div class="row">
+                <!-- =========== TITRE ================= -->
+                <div class="container-fluid">
+                    <div class="row text-center mb-3">
+                        <div class="col-12">
+                            <a href="" class=" text-decoration-none">
+                                <h1 class="title-panier">Greenclothe</h1>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="index.htm" class="text-decoration-none link-back-eShop"><i class="fas fa-chevron-left"></i> Retourner à
+                    l'E-shop </a>
+                <!-- ============= PANIER ================ -->
+
+                <!-- --- Titre Panier --- -->
+                <div class="container-fluid">
+                    <div class="row text-center mb-4">
+                        <div class="col-12">
+                            <h2 class="perso_blue-green text-uppercase h4 font-weight-bold">mon panier</h2>
+                        </div>
+                    </div>
+                </div>
+                <!-- --- Table Header --- -->
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-12 text-center">
+                            <span class="perso_orange font-weight-bold text-uppercase">produits</span>
+                        </div>
+                        <div class="col-md-3 d-none d-md-block text-center">
+                            <span class="perso_orange font-weight-bold text-uppercase">quantité</span>
+                        </div>
+                        <div class="col-md-3 d-none d-md-block text-center">
+                            <span class="perso_orange font-weight-bold text-uppercase">sous-total</span>
+                        </div>
+                    </div>
+                </div>
+
+                
+                    
+                
+                    <!-- --- Table Body --- -->
+                    <div class="container-fluid ">
+
+                        {% for item in panier %}
+
+                            <div class="row le-panier mx-md-0 mx-sm-1 mb-5 d-flex justify-content-center flex-wrap">
+
+                                <!-- image Panier -->
+                                <div class="col-12 col-md-3  d-flex justify-content-center align-items-center pl-md-2 ">
+                                    <div class="cadre-img d-flex justify-content-center align-items-center">
+                                        <img class="img-fluid img-product-panier"
+                                            src="/assets/ressources/img/uploads/products/{{item.product.image}}" alt="">
+                                    </div>
+                                </div>
+
+                                <!-- Detail Produit -->
+                                <div class="col-12 col-md-4 d-flex align-items-md-start align-items-center justify-content-md-center flex-column p-0 mb-2">
+
+                                    <h2 class="product-name perso_blue-green p-1 text-nowrap ">{{item.product.name}}</h2>
+
+                                    <!-- Taille Select Box -->
+                                    <div class="taille-option p-1">
+                                        <strong class="text-uppercase taille-option-title mr-3 ">taille</strong>
+                                        <div class="  select-box-component mb-1 ">
+
+                                            <select class=" select-box" id="selectSize">
+                                                <option selected value="XL">XL</option>
+                                                <option value="L">L</option>
+                                                <option value="M">M</option>
+                                                <option value="S">S</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <!-- Lien Remove Article -->
+                                    <div class="remove-article">
+                                        
+                                        <a href="#" id="deleteCardItem" class=" link-remove-card">
+                                        <i class="far fa-trash-alt mr-1"style="font-size: 0.8rem;"></i><small>Supprimer</small></a>
+                                    </div>
+
+                                </div>
+
+                                <!-- Select Quantite -->
+                                <div class=" col-12 col-md-3 d-md-flex align-items-md-center p-0 mb-3">
+                                    
+                                    <div class="row taille-option p-1">
+                                        <div class="col-12 col-md-4 mb-md-0 mb-3 text-nowrap d-flex justify-content-center align-items-center">
+                                            <strong class="text-uppercase prix-quantité-card mb-2 "> <span class="prix-sous-total-title text-lowercase d-md-none">prix : </span> {{ item.product.price | amount  }}</strong>
+                                        </div>
+                                        
+
+                                        <div class=" col-12 col-md-8 d-flex justify-content-center justify-content-md-start   select-box-component mb-1 ">
+
+                                            <a class="text-dark btn btn-sm btn-light mr-2 mr-md-1 d-flex align-items-center" href="{{ path('panier_diminuer_article',{'id': item.product.id }) }}"> - </a>
+                                                <button class="btn btn-light"> {{ item.qty }} </button>
+                                            <a class="text-dark btn btn-sm btn-light ml-2 ml-md-1 d-flex align-items-center" href="{{ path('ajouter_panier',{'id': item.product.id }) }}?redirige=page_panier"> + </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Sous Total -->
+                                <div class=" col-12 col-md-2 d-flex justify-content-center justify-content-md-start align-items-md-center mb-3 p-md-0">
+                                    <div class="ml-md-3 sous-total-cont d-flex justify-content-center ">
+                                        <span class="font-weight-bold prix-sous-total mb-2 "> <span class=" prix-sous-total-title d-md-none ">Prix total : </span> {{ item.total | amount  }}</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% endfor %}
+
+                    </div>
+
+                <!-- Recap paiement et Tax -->
+                <div class="container-fluid ">
+                    <div class="row pt-4 px-3">
+                        <div class="col-lg-4 offset-lg-8 col-sm-6 offset-sm-6">
+
+                            <!-- code promo -->
+                            <form class="py-2 mb-2 text-center">
+                                <input type="text" id="inputCodeProm" class="custom-input-code-promo"
+                                    placeholder="code de réduction">
+                                <label for="inputCodeProm"></label>
+                                <button class="custom-btn-code-promo btn btn-sm btn-warning" type="submit">OK</button>
+
+                            </form>
+                            <!-- sous-total -->
+                            <div class="d-flex justify-content-between py-1">
+                                <span class="h6 text-uppercase ml-5">sous-total</span>
+                                <span class="h6 mr-4">{{ total | amount }}</span>
+                            </div>
+                            <!-- frais de port -->
+                            <div class="d-flex justify-content-between py-1">
+                                <span class="h6 text-uppercase ml-5">frais de port</span>
+                                <span class="h6 mr-4">0,00 €</span>
+                            </div>
+                            <!-- total TTC -->
+                            <div class="d-flex justify-content-between py-1">
+                                <span class="h6 perso_orange text-uppercase font-weight-bold ml-5"><strong>total
+                                        ttc</strong></span>
+                                <span class="h6 mr-4 perso_orange"> <strong> {{total | amount}} </strong> </span>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button class="btn btn-danger text-uppercase">Poursuivre la commande</button>
+                            </div>
+                        </div>
+
+                        <!-- ============ Carte Cadeaux =============== -->
+                        <div class="container-fluid  mt-5 ">
+
+                            <div class="row carte-cadeaux-cont py-5 ">
+                                <div class="col-12 text-center px-0">
+                                    <h2 class=" perso_blue_green h5 mb-4 ">vous souhaitez utiliser une carte cadeau?
+                                    </h2>
+                                    <form class="">
+                                        <label for="idCarteCadeau"></label>
+                                        <input type="text" id="idCarteCadeau" placeholder="votre num de carte cadeau"
+                                            class="custom-input-carte-cadeau py-1 mr-3">
+                                        <button class="btn btn-warning btn-sm text-uppercase px-2">ajouter</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- ========== Retour Achat ============= -->
+                        <div class="container-fluid">
+                            <div class="row mt-4 mb-4">
+                                <div class="col-3 p-0">
+                                    <a href="/collection.htm" class=" text-decoration-none ">
+                                        <div
+                                            class="cont-retour-achat d-flex align-items-center justify-content-center px-2">
+                                            <i class="fas fa-caret-left mr-1 "></i>
+                                            <span class="py-2 font-weight-bold ">Continuer mes achats</span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+</Section>
+
+
+{% endblock %}

@@ -62,6 +62,25 @@ class ProductRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult(); 
     }
 
+
+    public function findCategoryId(int $id)
+    {
+
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = 'SELECT * 
+        FROM product p
+        INNER JOIN product_category x ON p.id = x.product_id
+        INNER JOIN category c ON c.id = x.category_id 
+        WHERE p.id = :id
+        ';
+        $stmt = $conn->prepare($sql);
+        $stmt->bindValue(":id", $id);
+        $stmt -> executeStatement();
+
+        return $stmt->fetchAllAssociative();
+
+    }
     // /**
     //  * @return Product[] Returns an array of Product objects
     //  */
