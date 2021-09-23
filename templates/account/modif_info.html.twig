@@ -41,12 +41,10 @@
                     </div>
 
                     <div class="col-12 col-lg-6 px-4 mt-5 mt-lg-1 perso_blue-green">
-                        <div class="input-radio-info">
-                            <input type="radio" id="infoMister" checked  name="mr&ms">
-                            <label for="infoMister">Monsieur</label>
+                        <div class="input-radio-info  mb-3">
+                            
+                            {{form_widget(form.sex, {'attr': {'class': 'd-flex '}})}}
 
-                            <input type="radio" id="infoMiss" class="ml-5" name="mr&ms">
-                            <label for="infoMiss">Madame</label>
                         </div>
 
                         <div class="birth-date d-flex flex-column ">

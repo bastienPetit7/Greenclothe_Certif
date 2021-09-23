@@ -23,13 +23,20 @@
                     
                         {{ form_start(registrationForm) }}
 
+
                         {{ form_row(registrationForm.nom) }}
                         {{ form_row(registrationForm.prenom) }}
+
+                        {{ form_widget(registrationForm.sex , {'attr': {'class': 'my-5  d-flex' }}) }}
+
                         {{ form_row(registrationForm.telephone) }}
                         {{ form_row(registrationForm.email) }}
+                       
                         {{ form_row(registrationForm.plainPassword) }}
                         
-
+                        {{ form_widget(registrationForm.agreeTerms ) }}
+                        
+                        <a href="{{ path('cgu_conditions')}}" target="_blank"class="text-dark mb-5 mt-3 d-block" >lire les conditions generales d'utilisations</a>
                         <button type="submit" class="btn">S'inscrire</button>
                         {{ form_end(registrationForm) }}
                     

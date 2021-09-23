@@ -12,6 +12,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 class RegistrationFormType extends AbstractType
@@ -24,7 +26,7 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Votre nom',
                 'required' => false,
                 'attr'=> [
-                    'placeholder' => 'Entrez votre nom'
+                    'placeholder' => false
                 ]
             ])
 
@@ -32,7 +34,7 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Votre prénom',
                 'required' => false,
                 'attr'=> [
-                    'placeholder' => 'Entrez votre prénom'
+                    'placeholder' => false    
                 ]
             ])
 
@@ -40,7 +42,7 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Votre numéro de téléphone',
                 'required' => false,
                 'attr'=> [
-                    'placeholder' => 'Entrez votre numéro de téléphone'
+                    'placeholder' => false
                 ]
             ])
 
@@ -48,8 +50,26 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Votre adresse email',
                 'required' => false,
                 'attr'=> [
-                    'placeholder' => 'Entrez votre adresse email'
+                    'placeholder' => false           
                 ]
+            ])
+
+            ->add('sex', ChoiceType::class, [
+                'label' => false,
+
+                'choices'=> [
+                    'Homme' => '1',
+                    'Femme' => '2'
+                ],
+                'attr' => [
+                    'class' => 'd-flex'
+                ],
+                'label_attr' => [
+                    'class' => 'ml-1 mr-4 mt-2'
+                ],
+               
+                'expanded' => true
+                
             ])
             
             ->add('plainPassword', PasswordType::class, [
@@ -60,7 +80,7 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'attr' => [
                     'autocomplete' => 'new-password', 
-                    'placeholder' => 'Entrez votre mot de passe'
+                    'placeholder' => false          
                 ],
                 'constraints' => [
                     new NotBlank([
@@ -73,6 +93,20 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
+            ])
+            ->add('agreeTerms', CheckboxType::class, [
+                'mapped' => false,
+                'required' => false,
+                'label' => 'Veuillez accepter les CGUV',
+                'constraints' => [
+                    new IsTrue([
+                        'message' => 'Vous devez accepter les CGUV',
+                    ]),
+                ],
+                'label_attr' => [
+                    'class' => 'ml-1  mt-2'
+                ]
+               
             ])
         ;
     }

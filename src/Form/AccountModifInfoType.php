@@ -4,12 +4,13 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
 class AccountModifInfoType extends AbstractType
 {
@@ -29,6 +30,25 @@ class AccountModifInfoType extends AbstractType
             ->add('email', EmailType::class ,[
                 'disabled'=> true
             ])
+
+            ->add('sex', ChoiceType::class, [
+                'choices'=> [
+                    'Monsieur' => '1',
+                    'Madame' => '2'
+                ],
+                
+                'choice_attr' => [
+                    'Monsieur' => 'checked'
+                ],
+                'label_attr' => [
+                    'class' => 'ml-4'
+                ],
+                
+                 
+                'expanded' => true
+                
+            ])
+
             ->add('old_password', PasswordType::class, [
                 'mapped' => false,
                 'label' => 'Mot de passe*', 
