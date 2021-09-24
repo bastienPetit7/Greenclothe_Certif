@@ -18,8 +18,9 @@ class AccountModifInfoController extends AbstractController
     public function index(Request $request, EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder): Response
     {
         $notification = null; 
-        
+
         $user = $this->getUser(); 
+        
         $form= $this->createForm(AccountModifInfoType::class, $user); 
 
         $form->handleRequest($request); 

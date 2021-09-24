@@ -31,23 +31,23 @@ class AccountModifInfoType extends AbstractType
                 'disabled'=> true
             ])
 
-            ->add('sex', ChoiceType::class, [
-                'choices'=> [
-                    'Monsieur' => '1',
-                    'Madame' => '2'
-                ],
+            // ->add('sex', ChoiceType::class, [
+            //     'mapped' => false,
+            //     'choices'=> [
+            //         'Monsieur' => '1',
+            //         'Madame' => '2'
+            //     ],
                 
-                'choice_attr' => [
-                    'Monsieur' => 'checked'
-                ],
-                'label_attr' => [
-                    'class' => 'ml-4'
-                ],
+            //     'choice_attr' => [
+            //         'Monsieur' => 'checked'
+            //     ],
+            //     'label_attr' => [
+            //         'class' => 'ml-4'
+            //     ],
+            //     'expanded' => true, 
                 
-                 
-                'expanded' => true
                 
-            ])
+            // ])
 
             ->add('old_password', PasswordType::class, [
                 'mapped' => false,
