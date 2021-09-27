@@ -8,10 +8,13 @@ class PanierRealProduct
 
     public $qty;
 
-    public function __construct($product, $qty)
+    public $taille ;
+
+    public function __construct($product, $qty, $taille = null)
     {
         $this->product = $product;
         $this->qty = $qty;
+        $this->taille = $taille;
     }
 
     public function getTotal()

@@ -42,17 +42,22 @@
 
             <div class="col-lg-5 col-md-12 col-12 mt-lg-0 mt-5 text-sm-left text-right my-auto ">
                 {# <h6> Home / T-shirt</h6> #}
-                <h3 class="py-4 h1 perso_blue-green"> {{product.Name}}</h3>
+                <h3 class="py-4 h1 perso_blue-green"> {{product.name}}</h3>
                 <h3>{{product.price | amount}}</h3>
-                <select class="my-3">
-                    <option> Taille</option>
-                    <option value="XL">XL</option>
-                    <option value="L">L</option>
-                    <option value="M">M</option>
-                    <option value="S">S</option>
-                </select>
-                <input type="number" value="1" >
-                <button class="buy-btn btn btn-warning">Add to Cart</button>
+
+                {% if product.taille | length > 0 %}
+                
+                    {{form_start(form)}}
+                    {{form_row(form.taille)}}
+                    
+
+                <button type="submit" class="buy-btn btn btn-warning">Add to Cart</button>
+                    {{form_end(form)}}
+
+                    {% else %}
+                        <a href=" {{path('ajouter_panier', { 'id' : product.id } )}} " class="buy-btn btn btn-warning">Add to Cart</a>
+
+                {% endif %}
                 <h4 class="mt-5 mb-5">{{product.subtitle}}</h4>
                 <span>{{product.description}}</span>
             </div>

@@ -24,42 +24,32 @@
             <div class="row ">
 
                 <div class="col-md-6 mes-adresses">
-                    <div class="block-adresse-fact-defaut mb-5">
+                    <div class=" mb-5">
     
                         <h2 class="perso-red perso_font_bold h3">Adresses par défaut</h2>
-                        <h4 class="h5 mt-3">Adresse de facturation par défaut</h4>
+
+                        {% for address in app.user.addresses %}
+                            
+                        
+                        <h4 class="h5 mt-3"> {{address.name}} </h4>
     
                         <div class="info-adresse mb-3">
-                            <p class="h6">Bastien Petit</p>
-                            <p class="h6">119 boulevard de l'hôpital</p>
-                            <p class="h6">PARIS, 75013</p>
-                            <p class="h6">France</p>
-                            <p class="h6 mb-2">T: 0781149057</p>
-                            <a href="" class="text-reset text-decoration-none">Modifier l'adresse de facturation</a>
+                            <p class="h6"> {{address.firstname}} {{address.lastname}} </p>
+                            <p class="h6"> {{address.address}}</p>
+                            <p class="h6"> {{address.city}} , {{address.postal}}</p>
+                            <p class="h6"> {{address.country}} </p>
+                            <p class="h6 mb-2"> {{address.phone}} </p>
+                            <a href=" {{path('account_edit_address', {'id' : address.id })}} " class="text-reset text-decoration-none">Modifier</a> |  <a href=" {{path('account_delete_address', {'id' : address.id })}} " class="text-reset text-decoration-none">Supprimer</a>
     
                         </div>
                         
-                        
+                        {% endfor %}
+
     
                     </div>
                     
     
-                    <div class="block-adresse-livraison-defaut">
-    
-                        <h4 class="h5"> Adresse de livraison par défaut</h4>
-    
-                        <div class="info-adresse mb-3">
-                            <p class="h6">Bastien Petit</p>
-                            <p class="h6">119 boulevard de l'hôpital</p>
-                            <p class="h6">PARIS, 75013</p>
-                            <p class="h6">France</p>
-                            <p class="h6 mb-2">T: 0781149057</p>
-                            <a href="" class="text-reset text-decoration-none ">Modifier l'adresse de livraison</a>
-                        </div>
-                        
-                        
-    
-                    </div>
+                   
     
                     
     
@@ -96,7 +86,7 @@
                     </div>
                    
                     <div class="mr-4">
-                        <a  href="{{path('account_modif_address')}}" class="btn btn-danger text-uppercase rounded-pill  ">ajouter une nouvelle adresse</a >
+                        <a  href="{{path('account_create_address')}}" class="btn btn-danger text-uppercase rounded-pill  ">ajouter une nouvelle adresse</a >
                     </div>
     
                 </div>   

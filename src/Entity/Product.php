@@ -79,6 +79,13 @@ class Product
      */
     private $isBest;
 
+    /**
+     * @ORM\Column(type="array", nullable=true)
+     */
+    private $taille = [];
+
+   
+
     public function __construct()
     {
         $this->category = new ArrayCollection();
@@ -209,4 +216,17 @@ class Product
 
         return $this;
     }
+
+    public function getTaille(): ?array
+    {
+        return $this->taille;
+    }
+
+    public function setTaille(?array $taille): self
+    {
+        $this->taille = $taille;
+
+        return $this;
+    }
+
 }

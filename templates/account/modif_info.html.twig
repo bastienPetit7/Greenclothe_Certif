@@ -2,11 +2,11 @@
 
 {% block body %}
 
-
+{# 
     {% if notification %}
         <div class="alert alert-info"> {{notification}} </div>
     
-    {% endif %}
+    {% endif %} #}
 
     {{form_start(form)}}
 
@@ -43,25 +43,14 @@
                     <div class="col-12 col-lg-6 px-4 mt-5 mt-lg-1 perso_blue-green">
                         <div class="input-radio-info  mb-3">
                             
-                            {# {{form_widget(form.sex, {'attr': {'class': 'd-flex '}})}} #}
+                            {{form_widget(form.sex, {'value' : sexActuel })}}
 
                         </div>
 
-                        <div class="birth-date d-flex flex-column ">
-                            <label for="birthday">* votre date d'anniversaire</label>
-                            <div class="select-birthDate">
-                                <select id="birthDay">
-                                    <option value="0">Day</option>
-                                </select>
-                                
-                                <select id="birthMonth">
-                                    <option value="0">Month</option>
-                                </select>
-                                
-                                <select id="birthYear">
-                                    <option value="0">Year</option>
-                                </select>
-                            </div>
+                        <div class="birth-date d-flex flex-column  ">
+                            
+                            {{form_row(form.dateDeNaissance)}}
+
                         </div>
                     </div>
 

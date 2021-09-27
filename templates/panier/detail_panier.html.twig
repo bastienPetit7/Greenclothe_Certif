@@ -6,19 +6,20 @@
 <Section>
         <div class="container-fluid p-4">
             <div class="row">
-                <!-- =========== TITRE ================= -->
+              
                 <div class="container-fluid">
-                    <div class="row text-center mb-3">
-                        <div class="col-12">
-                            <a href="" class=" text-decoration-none">
-                                <h1 class="title-panier">Greenclothe</h1>
+                    <div class="row mt-4 mb-4">
+                        <div class="col-3 p-0">
+                            <a href=" {{path('product_index')}} " class=" text-decoration-none ">
+                                <div
+                                    class="cont-retour-achat d-flex align-items-center justify-content-center px-2">
+                                    <i class="fas fa-caret-left mr-1 "></i>
+                                    <span class="py-2 font-weight-bold ">Continuer mes achats</span>
+                                </div>
                             </a>
                         </div>
                     </div>
                 </div>
-
-                <a href="index.htm" class="text-decoration-none link-back-eShop"><i class="fas fa-chevron-left"></i> Retourner à
-                    l'E-shop </a>
                 <!-- ============= PANIER ================ -->
 
                 <!-- --- Titre Panier --- -->
@@ -68,23 +69,23 @@
                                     <h2 class="product-name perso_blue-green p-1 text-nowrap ">{{item.product.name}}</h2>
 
                                     <!-- Taille Select Box -->
-                                    <div class="taille-option p-1">
-                                        <strong class="text-uppercase taille-option-title mr-3 ">taille</strong>
-                                        <div class="  select-box-component mb-1 ">
+                                    {% if (item.taille is not same as NULL and item.taille is not same as 'null') %}
+                                    
+                                        <div class="taille-option p-1">
 
-                                            <select class=" select-box" id="selectSize">
-                                                <option selected value="XL">XL</option>
-                                                <option value="L">L</option>
-                                                <option value="M">M</option>
-                                                <option value="S">S</option>
-                                            </select>
+                                            <strong class="text-uppercase taille-option-title mr-3 ">Taille :  {{item.taille}}</strong>
+                                            
+                                            
                                         </div>
-                                    </div>
+
+                                        
+                                        
+                                    {% endif %}
 
                                     <!-- Lien Remove Article -->
                                     <div class="remove-article">
                                         
-                                        <a href="#" id="deleteCardItem" class=" link-remove-card">
+                                        <a href=" {{path('panier_supprimer_article', {'id' : item.product.id})}}" id="deleteCardItem" class=" link-remove-card">
                                         <i class="far fa-trash-alt mr-1"style="font-size: 0.8rem;"></i><small>Supprimer</small></a>
                                     </div>
 
@@ -101,9 +102,9 @@
 
                                         <div class=" col-12 col-md-8 d-flex justify-content-center justify-content-md-start   select-box-component mb-1 ">
 
-                                            <a class="text-dark btn btn-sm btn-light mr-2 mr-md-1 d-flex align-items-center" href="{{ path('panier_diminuer_article',{'id': item.product.id }) }}"> - </a>
+                                            <a class="text-dark btn btn-sm btn-light mr-2 mr-md-1 d-flex align-items-center" href="{{ path('panier_diminuer_article',{'id': item.product.id , 'taille' : item.taille}) }}"> - </a>
                                                 <button class="btn btn-light"> {{ item.qty }} </button>
-                                            <a class="text-dark btn btn-sm btn-light ml-2 ml-md-1 d-flex align-items-center" href="{{ path('ajouter_panier',{'id': item.product.id }) }}?redirige=page_panier"> + </a>
+                                            <a class="text-dark btn btn-sm btn-light ml-2 ml-md-1 d-flex align-items-center" href="{{ path('ajouter_panier',{'id': item.product.id, 'taille' : item.taille }) }}?redirige=page_panier"> + </a>
                                         </div>
                                     </div>
                                 </div>
@@ -176,7 +177,7 @@
                         <div class="container-fluid">
                             <div class="row mt-4 mb-4">
                                 <div class="col-3 p-0">
-                                    <a href="/collection.htm" class=" text-decoration-none ">
+                                    <a href=" {{path('product_index')}} " class=" text-decoration-none ">
                                         <div
                                             class="cont-retour-achat d-flex align-items-center justify-content-center px-2">
                                             <i class="fas fa-caret-left mr-1 "></i>

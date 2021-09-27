@@ -4,8 +4,10 @@ namespace App\Controller;
 
 
 use App\Repository\ProductRepository;
-use App\MesServices\Panier\PanierService;
+use App\Form\AjouterTailleProduitType;
 use App\Repository\CategoryRepository;
+use App\MesServices\Panier\PanierService;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -13,16 +15,18 @@ class CartController extends AbstractController
 {
     protected $panierService;
 
+
     public function __construct(PanierService $panierService)
     {
         $this->panierService = $panierService; 
+        
     }
 
 
     /**
-     * @Route("panier/ajouter/{id}", name="ajouter_panier")
+     * @Route("panier/ajouter/{id}/{taille?null}", name="ajouter_panier")
      */
-    public function ajouter(int $id, ProductRepository $productRepository, CategoryRepository $categoryRepository)
+    public function ajouter(int $id,  $taille, ProductRepository $productRepository, CategoryRepository $categoryRepository, Request $request)
     {
         $product = $productRepository->find($id); 
 
@@ -31,7 +35,14 @@ class CartController extends AbstractController
             throw $this->createNotFoundException("Le produit n'existe plus. ");
         }
 
-        $this->panierService->ajouter($id); 
+        $this->panierService->ajouter($id, $taille); 
+
+        $routeARediriger = $request->query->get('redirige');
+
+        if($routeARediriger)
+        {
+            return $this->redirectToRoute('panier_detail');
+        }
 
         $getId = $productRepository->findCategoryId($id);
         
@@ -49,30 +60,39 @@ class CartController extends AbstractController
     /**
      * @Route("/panier/detail", name="panier_detail")
      */
-    public function voirMonPanier()
+    public function voirMonPanier(Request $request)
     {
+        $form= $this->createForm(AjouterTailleProduitType::class); 
+        $form->handleRequest($request); 
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            
+        }
+        
         return $this->render("panier/detail_panier.html.twig",[
             'panier' => $this->panierService->detaillerLeContenu() ,
-            'total' => $this->panierService->getTotal()
+            'total' => $this->panierService->getTotal(), 
+            'form' => $form->createView()
         ]);
     }
 
     /**
-     * @Route("/panier/supprimer/{id}", name="panier_supprimer_article")
+     * @Route("/panier/supprimer/{id}/{taille?null}", name="panier_supprimer_article")
      */
-    public function supprimerArticle( int $id)
+    public function supprimerArticle( int $id, $taille)
     {
-        $this->panierService->supprimer($id);
+        $this->panierService->supprimer($id, $taille);
 
         return $this->redirectToRoute('panier_detail');
     }
 
     /**
-     *  @Route("/panier/diminuer/{id}", name="panier_diminuer_article")
+     *  @Route("/panier/diminuer/{id}/{taille?null}", name="panier_diminuer_article")
      */
-    public function diminuerArticle( int $id)
+    public function diminuerArticle( int $id, $taille)
     {
-        $this->panierService->diminuer($id);
+        $this->panierService->diminuer($id, $taille);
 
         return $this->redirectToRoute('panier_detail');
     }

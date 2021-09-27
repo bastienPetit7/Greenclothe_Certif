@@ -32,24 +32,34 @@ class PanierService
         return $this->session->set('panier', $panier);
     }
 
-    public function ajouter(int $id)
+    public function viderPanier()
+    {
+        $this->sauvegarderPanier([]);
+    }
+
+
+    public function ajouter(int $id, $taille = null)
     {
 
         $panier = $this->getPanier(); 
 
+
         foreach($panier as $item)
         {
-            if($item->getId() === $id)
+            if($item->getId() === $id && $item->getTaille() === $taille)
             {
                 $item->setQty( $item->getQty() + 1); 
+                
                 $this->sauvegarderPanier($panier); 
                 return; 
 
             }
         }
 
+        
         $nouvelItem= new PanierItem();
         $nouvelItem->setId($id); 
+        $nouvelItem->setTaille($taille);
         $nouvelItem->setQty(1);
 
         $panier[] = $nouvelItem; 
@@ -84,7 +94,7 @@ class PanierService
             //J ajoute le produit que j ai trouve en bdd et sa quantite dans une nouvelle classe
             //Une classe qui va vraiment representer le produit reel
             //J ajoute cet instance de la classe de Produit Reel dans le tableau à retourner
-            $contenu[] = new PanierRealProduct($product,$qty);
+            $contenu[] = new PanierRealProduct($product,$qty, $item->getTaille());
         }
         
         return $contenu;
@@ -113,16 +123,16 @@ class PanierService
         return $total;
     }
 
-    public function supprimer(int $id) 
+    public function supprimer(int $id, $taille = null) 
     {
-        //Je vais chercher un panier
+        
         $panier = $this->getPanier();
 
-        //Je verifie si j ai deja dans mon panier l article à ajouter
+        
         foreach($panier as $item)
         {
-            //Si je l ai , j augmente la quantité de 1
-            if($item->getId() === $id)
+            
+            if($item->getId() === $id && $item->getTaille() === $taille)
             {
                 $key = array_search($item,$panier);
                 unset($panier[$key]);
@@ -132,20 +142,20 @@ class PanierService
         }
     }
 
-    public function diminuer(int $id)
+    public function diminuer(int $id, $taille = null)
     {
         //Je vais chercher un panier
         $panier = $this->getPanier();
 
         foreach($panier as $item)
         {
-            if($item->getId() === $id)
+            if($item->getId() === $id && $item->getTaille() === $taille)
             {
                 $quantite = $item->getQty();
 
                 if($quantite === 1)
                 {
-                    $this->supprimer($id);
+                    $this->supprimer($id, $taille);
                     return;
                 }
                 else

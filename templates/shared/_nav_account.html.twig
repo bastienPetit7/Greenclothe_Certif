@@ -11,12 +11,28 @@
             </div>
             <div class=" block-content" >
                 <ul class="menu-account" id="menuAcount">
-                    <li class="current"><a href=" {{path('account')}} ">tableau de bord</a></li>
-                    <li><a href="">mes commandes</a></li>
-                    <li><a href=" {{path('account_modif_info')}} ">mes informations</a></li>
-                    <li><a href=" {{path('account_address')}} ">mes adresses</a></li>
-                    <li><a href="">mes retours</a></li>
-                    <li><a href="">mes avoirs / réductions</a></li>
+                <li 
+                    {% if  app.request.attributes.get('_route') is same as "account" %}
+                        class="current"
+                    {% endif %}
+                    ><a href=" {{path('account')}} ">tableau de bord</a>
+                </li>
+                <li 
+                {% if  app.request.attributes.get('_route') is same as "order" %}
+                class="current"
+                {% endif %}
+                ><a href="">mes commandes</a></li>
+                <li 
+                {% if  app.request.attributes.get('_route') is same as "account_modif_info" %}
+                    class="current"
+                {% endif %}><a href=" {{path('account_modif_info')}} ">mes informations</a>
+                </li>
+                <li 
+                {% if  app.request.attributes.get('_route') is same as "account_address" %}
+                    class="current"
+                {% endif %}><a href=" {{path('account_address')}} ">mes adresses</a>
+                </li>
+                
 
                 </ul>
             </div>

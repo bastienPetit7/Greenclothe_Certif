@@ -9,6 +9,8 @@ class PanierItem
 
     protected $qty; 
 
+    protected $taille;
+
     public function getId()
     {
         return $this->id;
@@ -28,6 +30,17 @@ class PanierItem
     public function setQty($qty)
     {
         $this->qty = $qty;
+        return $this;
+    }
+
+    public function getTaille()
+    {
+        return $this->taille;
+    }
+
+    public function setTaille($taille)
+    {
+        $this->taille = $taille;
         return $this;
     }
 

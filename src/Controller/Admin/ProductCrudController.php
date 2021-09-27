@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
@@ -33,6 +34,12 @@ class ProductCrudController extends AbstractCrudController
             TextField::new('subtitle'),
             TextareaField::new('description'), 
             BooleanField::new('isBest'), 
+            ChoiceField::new('taille')->setChoices(['S' => 's',
+            'M' => 'm',
+            'L' => 'l',
+            'XL' => 'xl',
+            'XXL' => 'xxl'])->allowMultipleChoices(),
+            
             MoneyField::new('price')->setCurrency('EUR'),
             AssociationField::new('category')
            

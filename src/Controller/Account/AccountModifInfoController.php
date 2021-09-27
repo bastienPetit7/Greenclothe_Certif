@@ -20,6 +20,9 @@ class AccountModifInfoController extends AbstractController
         $notification = null; 
 
         $user = $this->getUser(); 
+
+        $sexActuel = strval( $user->getSex());
+       
         
         $form= $this->createForm(AccountModifInfoType::class, $user); 
 
@@ -28,6 +31,9 @@ class AccountModifInfoController extends AbstractController
         if($form->isSubmitted() && $form->isValid())
         {
             $old_pwd = $form->get('old_password')->getData();
+
+            $newSex = $form->get('sex')->getData(); 
+            
 
             
                 if($passwordEncoder->isPasswordValid($user, $old_pwd))
@@ -39,26 +45,32 @@ class AccountModifInfoController extends AbstractController
                        $password = $passwordEncoder->encodePassword($user, $new_pwd); 
 
                        $user->setPassword($password);
+                       $user->setSex($newSex);
                        $em->persist($user); 
                        $em->flush(); 
 
-                       $notification = 'Votre mot de passe a bien été modifié. Vos informations ont été mise à jour.';
+                       $this->addFlash('success', 'Votre mot de passe a bien été modifié. Vos informations ont été mise à jour.');
+                    
 
                     //    return $this->redirectToRoute('account_modif_info');
 
                     }else {
 
+                        $user->setSex($newSex);
+                        $em->persist($user);
                         $em->flush(); 
                         
-                        $notification = 'Vos informations ont bien été modifié';
+                        $this->addFlash('success', 'Vos informations ont bien été modifié');
+                      
 
-                        // return $this->redirectToRoute('account_modif_info');
+                        return $this->redirectToRoute('account_modif_info');
 
                     }
 
 
                 } else { 
-                    $notification = 'Votre mot de passe actuel est incorrect, veuillez re-saisire votre mot de passe';
+                    $this->addFlash('danger', 'Votre mot de passe actuel est incorrect, veuillez re-saisire votre mot de passe');
+                    
                 }
            
 
@@ -73,7 +85,7 @@ class AccountModifInfoController extends AbstractController
 
         return $this->render('account/modif_info.html.twig', [
             'form' => $form->createView(),
-            'notification' => $notification
+            'sexActuel' => $sexActuel
         ]);
     }
 }

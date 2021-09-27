@@ -37,45 +37,39 @@
                         
                             <!-- Debut carte -->
                             <div class="card-collection">
-                                <div class="img-box">
-                                    <img src="/assets/ressources/img/uploads/products/{{product.image}}" alt="{{product.name}}">
-                                    <ul class="action">
-                                        <li>
-                                            <i class="fa fa-heart" aria-hidden="true"></i>
-                                            <span>Add to Wishlist</span>
-                                        </li>
-                                         <a href=" {{path('ajouter_panier', {'id' : product.id})}} " class="text-dark">
-                                            <li>
-                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                <span>Add to cart</span>
-                                            </li>
-                                        </a>
-                                        <li>
-                                        <a href=" {{ path('product_show',{'slug': product.slug })}}" class="text-dark">
-                                            <i class="fa fa-eye" aria-hidden="true"></i>
-                                            <span>View Details</span>
-                                        </a>
-                                        </li>
-                                        
-                                    </ul>
-                                </div>
-                                <div class="content-card-collection">
-                                    <div class="product-name-collection">
-                                        <h3> {{product.subtitle}} </h3>
-                                    </div>
-                                    <div class="price-rating">
-                                        <h2> {{product.price | amount}} </h2>
-                                    
-                                        <div class="rating">
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa fa-star" aria-hidden="true"></i>
-                                            <i class="fa grey fa-star" aria-hidden="true"></i>
-                                        </div>
+                                <a href=" {{path('product_show',{'slug': product.slug })}} ">
 
+                                    <div class="img-box">
+                                        <img src="/assets/ressources/img/uploads/products/{{product.image}}" alt="{{product.name}}">
+                                        <ul class="action">
+                                        
+                                            <li>
+                                            <a href=" {{ path('product_show',{'slug': product.slug })}}" class="text-dark">
+                                                <i class="fa fa-eye" aria-hidden="true"></i>
+                                                <span>View Details</span>
+                                            </a>
+                                            </li>
+                                            
+                                        </ul>
                                     </div>
-                                </div>
+                                    <div class="content-card-collection">
+                                        <div class="product-name-collection">
+                                            <h3> {{product.subtitle}} </h3>
+                                        </div>
+                                        <div class="price-rating">
+                                            <h2> {{product.price | amount}} </h2>
+                                        
+                                            {# <div class="rating">
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa fa-star" aria-hidden="true"></i>
+                                                <i class="fa grey fa-star" aria-hidden="true"></i>
+                                            </div> #}
+
+                                        </div>
+                                    </div>
+                                </a>
                             </div>
                             <!-- Fin Carte -->
 

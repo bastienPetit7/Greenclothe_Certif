@@ -4,15 +4,18 @@ namespace App\Controller;
 
 use App\Classe\Search;
 use App\Entity\Product;
-use App\Form\ProductType;
 use App\Form\SearchType;
-use App\Repository\ProductRepository;
+use App\Form\ProductType;
 use Doctrine\ORM\EntityManager;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Form\AjouterProduitType;
+use App\Repository\ProductRepository;
+use App\Form\AjouterTailleProduitType;
+use App\MesServices\Panier\PanierService;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
  * @Route("/product")
@@ -86,14 +89,33 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/{slug}", name="product_show", methods={"GET"})
+     * @Route("/{slug}", name="product_show")
      */
-    public function show(string $slug, ProductRepository $productRepository): Response
+    public function show(string $slug, ProductRepository $productRepository, Request $request, PanierService $panierService): Response
     {
         $product = $productRepository->findOneBySlug($slug); 
+        $form= $this->createForm(AjouterTailleProduitType::class); 
+        $form->handleRequest($request); 
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $taille = $form->get('taille')->getData(); 
+            
+            $panierService->ajouter($product->getId(), $taille); 
+
+            $this->addFlash('success', 'votre produit a bien été ajouter au panier'); 
+            
+            return $this->redirectToRoute('product_show', [
+                'slug' => $slug
+            ]);
+
+        }
+        
+       
 
         return $this->render('product/show.html.twig', [
             'product' => $product,
+            'form' => $form->createView()
         ]);
     }
 

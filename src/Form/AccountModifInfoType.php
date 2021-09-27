@@ -3,19 +3,24 @@
 namespace App\Form;
 
 use App\Entity\User;
+
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
+
 class AccountModifInfoType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        
+
         $builder
             ->add('prenom', TextType::class, [
                 'attr' => [
@@ -31,23 +36,32 @@ class AccountModifInfoType extends AbstractType
                 'disabled'=> true
             ])
 
-            // ->add('sex', ChoiceType::class, [
-            //     'mapped' => false,
-            //     'choices'=> [
-            //         'Monsieur' => '1',
-            //         'Madame' => '2'
-            //     ],
+            ->add('sex', ChoiceType::class, [
                 
-            //     'choice_attr' => [
-            //         'Monsieur' => 'checked'
-            //     ],
-            //     'label_attr' => [
-            //         'class' => 'ml-4'
-            //     ],
-            //     'expanded' => true, 
+                'choices'=> [
+                    'Monsieur' => 1,
+                    'Madame' => 2
+                ],
                 
                 
-            // ])
+                'label_attr' => [
+                    'class' => 'ml-4 form-control-sm'
+                ],
+                'expanded' => false, 
+                
+                
+            ])
+
+            ->add('dateDeNaissance', DateType::class, [
+                'label' => 'Date de naissance',
+                'attr' => [
+                    'placeholder' => 'Votre date de naissance',
+                    
+                ],
+                'years' => range(1950, 2021)
+                
+                
+            ])
 
             ->add('old_password', PasswordType::class, [
                 'mapped' => false,
