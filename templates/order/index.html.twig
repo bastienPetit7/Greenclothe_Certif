@@ -1,20 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello OrderController!{% endblock %}
+{% block title %}Valider ma commande - Greenclothe{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+<div class="container mb-5 my-4 mx-auto">
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/bastienpetit/Desktop/Symfony/SymfonyPhiliance/greenclothe/greenclothe/src/Controller/OrderController.php'|file_link(0) }}">src/Controller/OrderController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/bastienpetit/Desktop/Symfony/SymfonyPhiliance/greenclothe/greenclothe/templates/order/index.html.twig'|file_link(0) }}">templates/order/index.html.twig</a></code></li>
-    </ul>
+    <h2 class="text-center">Je passe ma commande</h2>
+
+    <p class="text-center">Choisissez vos préferences avant de passer votre commande</p>
+
+    <hr>
+
+    <div class="row order-set-up">
+        <div class="col-md-6 col-12 w-100">
+            
+            <div class="cont-adresse">
+            
+                {% set formHtml %}
+
+                    {{form_start(form, {action:path('order_recap')})}}
+                        {{form_label(form.addresses, 'Choisissez votre adresse de livraison')}}
+                        <a href="{{path('account_create_address')}}">Ajouter une nouvelle adresse</a>
+                    {{form_end(form)}}
+
+                {% endset %}
+
+                {{formHtml|replace({'[br]' : '<br/>'}) | raw }}
+
+            </div>
+
+           
+        </div>
+        <div class="col-md-6 col-12 ">
+            <div class="border border-warning mx-auto p-4">
+                <strong class="text-center font-weight-bold d-block mx-auto mt-2">Récap de ma commande</strong><hr class="perso_bg_orange">
+
+                {% for item in cart %}
+                    <div class="row align-items-center ">
+                        <div class="col-3">
+                            <img class="img-fluid img-product-panier"src="/assets/ressources/img/uploads/products/{{item.product.image}}" alt="">
+                        </div>
+                        <div class="col-5">
+                        <strong>{{item.product.name}}</strong>  <br>
+                            <small> Taille: {{item.taille}} </small><br>
+                            <small>Qty : x {{ item.qty}}</small>
+                        </div>
+                        <div class="col-4">
+                        Prix : {{(item.product.price * item.qty) | amount}}
+                        </div>
+                        
+                    </div>
+                    <hr class="perso_bg_orange">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
 </div>
+
 {% endblock %}

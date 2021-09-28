@@ -1497,3 +1497,34 @@ h3{
     margin: 0;
 }
 
+/* ======================= Page mes commandes ==============================*/
+
+.cont-adresse{
+    width: 500px;
+    
+
+}
+
+.cont-adresse .col-form-label{
+    font-weight: 900;
+    font-size: 16px;
+    /* text-decoration: underline; */
+}
+
+#order_addresses .form-check{
+    background: var(--greenLight-perso) ;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+#order_carrier .form-check{
+    background: var(--greenLight-perso) ;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.form-check-order-final{
+    background: var(--greenLight-perso) ;
+    padding: 20px;
+    margin-top: 10px;
+}

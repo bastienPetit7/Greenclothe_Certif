@@ -4,6 +4,7 @@ namespace App\Controller\Account;
 
 use App\Entity\Address;
 use App\Form\AccountModifAddressType;
+use App\MesServices\Panier\PanierService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +33,7 @@ class AccountAddressController extends AbstractController
     /**
      * @Route("/account/create/address", name="account_create_address")
      */
-    public function create(Request $request): Response
+    public function create(Request $request, PanierService $panierService): Response
     {
         $address = new Address; 
 
@@ -45,7 +46,16 @@ class AccountAddressController extends AbstractController
             $this->entityManager->persist($address); 
             $this->entityManager->flush(); 
 
-            return $this->redirectToRoute('account_address'); 
+            // Redirection en fonction de si panier vide ou pas.. Si empty => redirection vers Account, si rempli => redirection Account
+            if(empty($panierService->getPanier()))
+            {
+
+                return $this->redirectToRoute('account_address'); 
+            } else {
+
+                return $this->redirectToRoute('order');
+
+            }
            
 
         }
