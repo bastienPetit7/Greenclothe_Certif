@@ -18,19 +18,20 @@
                     ><a href=" {{path('account')}} ">tableau de bord</a>
                 </li>
                 <li 
-                {% if  app.request.attributes.get('_route') is same as "order" %}
-                class="current"
-                {% endif %}
-                ><a href="">mes commandes</a></li>
-                <li 
-                {% if  app.request.attributes.get('_route') is same as "account_modif_info" %}
+                    {% if  app.request.attributes.get('_route') is same as "account_order" %}
                     class="current"
-                {% endif %}><a href=" {{path('account_modif_info')}} ">mes informations</a>
+                    {% endif %}
+                    ><a href="{{path('account_order')}}">mes commandes</a>
                 </li>
                 <li 
-                {% if  app.request.attributes.get('_route') is same as "account_address" %}
-                    class="current"
-                {% endif %}><a href=" {{path('account_address')}} ">mes adresses</a>
+                    {% if  app.request.attributes.get('_route') is same as "account_modif_info" %}
+                        class="current"
+                    {% endif %}><a href=" {{path('account_modif_info')}} ">mes informations</a>
+                    </li>
+                <li 
+                    {% if  app.request.attributes.get('_route') is same as "account_address" %}
+                        class="current"
+                    {% endif %}><a href=" {{path('account_address')}} ">mes adresses</a>
                 </li>
                 
 

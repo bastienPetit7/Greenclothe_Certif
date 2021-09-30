@@ -1,0 +1,58 @@
+{% extends "base_account.html.twig" %}
+
+{% block title %}Mes commandes - Account{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    <h2>Mes commandes</h2>
+    <p>C'est dans cette espace que vous allez pouvoir gérer vos commandes</p>
+
+
+    <hr>
+
+    {% if orders | length == 0 %}
+
+    <p class="text-center">
+        Vous n'avez pas encore passé de commande chez Greenclothe
+    
+    </p>
+    
+    {% else %}
+
+        
+        <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Référence</th>
+      <th scope="col">Passée le</th>
+      <th scope="col">Produit(s)</th>
+      <th scope="col">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+        {% for order in orders %}
+           
+            <tr>
+                <td > <span class="badge badge-secondary">{{order.reference}}</span> </td>
+                <th > {{order.createdAT | date('d/m/Y')}} </th>
+                <td> {{order.orderDetails | length}}</td>
+                <td> {{(order.carrierPrice + order.getTotal) | amount}} </td>
+                <td class="text-right"> <a href=" {{path('home')}} "> voir ma commande</a></td>
+            </tr>
+                        
+        {% endfor %}
+    
+  </tbody>
+</table>
+           
+       
+    
+    
+    {% endif %}
+
+
+</div>
+
+{% endblock %}

@@ -25,16 +25,16 @@ class ProductController extends AbstractController
     /**
      * @Route("/", name="product_index")
      */
-    public function index(ProductRepository $productRepository, Request $request): Response
+     public function index(ProductRepository $productRepository, Request $request): Response
     {
-        $search = new Search; 
+         $search = new Search; 
         $form = $this->createForm(SearchType::class, $search); 
 
         $form->handleRequest($request); 
 
         if($form->isSubmitted() && $form->isValid())
         {
-            $products = $productRepository->findWithSearch($search);
+             $products = $productRepository->findWithSearch($search);
         } else {
             
             $products = $productRepository->findAll();

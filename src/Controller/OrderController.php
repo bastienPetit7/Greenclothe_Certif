@@ -2,16 +2,17 @@
 
 namespace App\Controller;
 
-use App\Entity\Order;
-use App\Entity\OrderDetails;
-use App\Form\OrderType;
-use App\MesServices\Panier\PanierService;
 use DateTime;
+use Stripe\Stripe;
+use App\Entity\Order;
+use App\Form\OrderType;
+use App\Entity\OrderDetails;
 use Doctrine\ORM\EntityManagerInterface;
+use App\MesServices\Panier\PanierService;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\Request;
 
 class OrderController extends AbstractController
 {
@@ -60,7 +61,7 @@ class OrderController extends AbstractController
 
         // Je lui passe un tableau d'option en troisième arguments afin de pouvoir récupérer mon utilisateur via le formulaire.
         $form = $this->createForm(OrderType::class, null, [
-            'user' => $this->getUser()
+             'user' => $this->getUser()
         ]); 
 
         $form->handleRequest($request); 
@@ -73,7 +74,7 @@ class OrderController extends AbstractController
            
             
             // Création de chaine de charactères avec toutes les infos necessaire a stocker deans order->setDelivery(); 
-            $delivery_content = $delivery->getFirstname().' '.$delivery->getLastname();
+             $delivery_content = $delivery->getFirstname().' '.$delivery->getLastname();
             $delivery_content .= '<br/>'. $delivery->getPhone();
  
 
@@ -88,6 +89,8 @@ class OrderController extends AbstractController
             
            //Enregistrer ma commande => Order 
            $order = new Order; 
+           $reference = $date->format('dmY').'-'.uniqid(); 
+           $order->setReference($reference); 
            $order->setUser($this->getUser()); 
            $order->setCreatedAt($date); 
            $order->setCarrierName($carrier->getName());
@@ -111,13 +114,16 @@ class OrderController extends AbstractController
               
            }
 
-        //    $this->entityManager->flush(); 
+            $this->entityManager->flush(); 
+
+           
 
             return $this->render('order/add.html.twig', [ 
                 'cart'=> $panierService->detaillerLeContenu(), 
                 'total' => $panierService->getTotal(),
                 'carrier' => $carrier, 
-                'address' => $delivery_content
+                'address' => $delivery_content, 
+                'reference' => $order->getReference()
             ]);
         }
 

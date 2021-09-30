@@ -2,15 +2,16 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Carrier;
 use App\Entity\User;
+use App\Entity\Order;
+use App\Entity\Carrier;
 use App\Entity\Product;
 use App\Entity\Category;
-use App\Entity\Order;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
+use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 
 class DashboardController extends AbstractDashboardController
@@ -20,7 +21,9 @@ class DashboardController extends AbstractDashboardController
      */
     public function index(): Response
     {
-        return parent::index();
+        $routeBuilder = $this->get(AdminUrlGenerator::class);
+
+        return $this->redirect($routeBuilder->setController(OrderCrudController::class)->generateUrl());
     }
 
     public function configureDashboard(): Dashboard
@@ -37,5 +40,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Categories', 'fas fa-list', Category::class);
         yield MenuItem::linkToCrud('Products', 'fas fa-tag', Product::class);
         yield MenuItem::linkToCrud('Carriers', 'fas fa-truck', Carrier::class);
+        yield MenuItem::linkToRoute('Retour Site', 'fas fa-undo-alt', 'home');
     }
 }

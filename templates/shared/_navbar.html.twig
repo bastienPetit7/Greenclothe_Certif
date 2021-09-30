@@ -19,11 +19,11 @@
                         <a class="dropdown-item" href="collection.htm">Selection Automne / Hiver</a>
                         <div class="dropdown-divider"></div>
 
-                        {% for c in categoryRepository.findAll() %}
+                         {% for c in categoryRepository.findAll() %}
                             
                             <a class="dropdown-item" href=" {{path('category_show', {'id' : c.id})}} "> {{c.name}} </a>
 
-                        {% endfor %}
+                         {% endfor %}
 
                        
                         <div class="dropdown-divider"></div>
@@ -49,21 +49,7 @@
                             <a class="nav-link " href=" {{path('admin')}} " tabindex="-1" aria-disabled="true" title="Espace Admin">Admin</a>
                         </li>
                     
-                        <li class="nav-item dropdown dropdown-megamenu">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" title="Administration ">
-                                Administrateur
-                            </a>
-                            <div class="dropdown-menu " aria-labelledby="navbarDropdown">
-
-                                <a class="dropdown-item " href=" {{path('product_index')}} ">Les produits</a>
-                                <a class="dropdown-item" href="{{path('product_new')}}">Ajouter un produit</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{path('category_index')}}">Les catégories</a>
-                                <a class="dropdown-item" href="{{path('category_new')}}">Ajouter une catégorie</a>
-                            
-                            </div>
-                        </li>
+                        
                     
                     {% endif %}
 

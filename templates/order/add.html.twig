@@ -64,7 +64,10 @@
             </div>
 
             </div>
-            <a href="" class="btn btn-warning mt-3 mb-2 w-100  font-weight-bold  ">Payer | {{ (total + carrier.price) | amount }}</a>
+            <form action="{{ path('stripe_checkout', {'reference' : reference }) }}" method="POST">
+                    <button class="btn btn-warning mt-3 mb-2 w-100  font-weight-bold" type="submit" id="checkout-button">Payer | {{ (total + carrier.price) | amount }}</button>
+            </form>
+            {# <a href=" {{path('stripe_checkout')}} " class="btn btn-warning mt-3 mb-2 w-100  font-weight-bold  ">Payer | {{ (total + carrier.price) | amount }}</a> #}
         </div>
     </div>
 

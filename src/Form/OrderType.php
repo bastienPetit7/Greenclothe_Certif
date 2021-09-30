@@ -15,7 +15,7 @@ class OrderType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         // Je récupére le user passé dans mon tableau d'option via le OrderController
-        $user = $options['user']; 
+         $user = $options['user']; 
 
         $builder
             ->add('addresses', EntityType::class, [
