@@ -22,6 +22,13 @@
                 </div>
                 <!-- ============= PANIER ================ -->
 
+            {% if panier | length == 0 %}
+                <div class="w-100 d-flex justify-content-center">
+                    <p class="text-center">Vous n'avez aucun produit dans votre panier pour le moment</p>
+                </div>
+
+            {% else %}
+                
                 <!-- --- Titre Panier --- -->
                 <div class="container-fluid">
                     <div class="row text-center mb-4">
@@ -78,14 +85,18 @@
                                             
                                         </div>
 
-                                        
+                                       {% else %}
+                                        {{form_start(form, {action:path('ajouter_panier', {'id' : item.product.id })})}}
+                                        {{form_row(form.taille)}}
+                                        <button type="submit" class="btn btn-link link-remove-card">valider votre taille</button>     
+                                        {{form_end(form)}}   
                                         
                                     {% endif %}
 
                                     <!-- Lien Remove Article -->
                                     <div class="remove-article">
-                                        
-                                        <a href=" {{path('panier_supprimer_article', {'id' : item.product.id})}}" id="deleteCardItem" class=" link-remove-card">
+                                         
+                                        <a href=" {{path('panier_supprimer_article', {'id' : item.product.id, 'taille' : item.taille})}}" id="deleteCardItem" class=" link-remove-card">
                                         <i class="far fa-trash-alt mr-1"style="font-size: 0.8rem;"></i><small>Supprimer</small></a>
                                     </div>
 
@@ -147,6 +158,8 @@
                                 <a class="btn btn-danger text-uppercase" href=" {{path('order')}} ">Poursuivre la commande</a>
                             </div>
                         </div>
+
+                {% endif %}
 
                         <!-- ============ Carte Cadeaux =============== -->
                         <div class="container-fluid  mt-5 ">

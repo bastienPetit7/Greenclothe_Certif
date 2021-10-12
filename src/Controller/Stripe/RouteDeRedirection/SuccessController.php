@@ -3,6 +3,7 @@
 namespace App\Controller\Stripe\RouteDeRedirection;
 
 
+use App\Classe\Mail;
 use App\Entity\Order;
 use Doctrine\ORM\EntityManagerInterface;
 use App\MesServices\Panier\PanierService;
@@ -41,7 +42,9 @@ class SuccessController extends AbstractController
             $this->entityManager->flush(); 
 
             //Envoyer un mail au client pour confirmer sa commande
-
+            $mail = new Mail; 
+            $content = 'Bonjour'.$order->getUser()->getPrenom(). ' <br/> Merci pour votre commande';
+            $mail->send( $order->getUser()->getEmail(), $order->getUser()->getPrenom(), 'Votre commande est validé', $content); 
         }
 
         

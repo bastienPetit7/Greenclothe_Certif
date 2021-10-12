@@ -1,0 +1,61 @@
+{% extends "base_account.html.twig" %}
+
+{% block title %}Ma commandes - Account{% endblock %}
+
+{% block body %}
+
+    <div class="container mb-5 py-4">
+
+      <div class="mb-5">
+        <h2 class="text-center">Ma commande n°{{order.reference}} </h2>
+        <a href=" {{path('account_order')}} "> < Retour</a>
+      
+    </div>
+    <hr>
+    Commande passée le : {{order.createdAT | date('d/m/Y')}} <br>
+    Référence de ma commande : {{order.reference}} <br>
+    Transporteur choisi : {{order.carrierName}}
+
+        
+
+    <table class="table my-5">
+      <thead>
+        <tr>
+          <th scope="col">Produit</th>
+          <th scope="col">Quantité</th>
+          <th class="text-center" scope="col">Prix unitaire</th>
+          <th class="text-right"scope="col">Total</th>
+         
+          {# <th class="text-right" scope="col">Voir ma commande</th> #}
+        </tr>
+      </thead>
+      <tbody>
+            {% for product in order.orderDetails %}
+                    
+                <tr>
+                    <td > <span class="badge badge-warning p-2">{{product.product}}</span> </td>
+                    <td > x {{product.quantity}} </td>
+                    <td class="text-center"> {{product.price | amount}}</td>
+                    <td class="text-right"> {{product.total | amount}} </td>
+                    
+                </tr>
+                            
+            {% endfor %}
+        
+      </tbody>
+    </table>
+   
+    <div class="text-right">
+        <strong>Sous total : </strong> {{order.getTotal | amount}} <br> 
+        <strong>Livraison : </strong> {{order.carrierPrice | amount}} <br>
+        <strong>Total : </strong> {{(order.carrierPrice + order.getTotal) | amount}}
+    </div>
+              
+       
+
+
+    </div>
+
+  </div>
+
+{% endblock %}

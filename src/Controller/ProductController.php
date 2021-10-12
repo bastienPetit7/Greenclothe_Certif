@@ -27,7 +27,7 @@ class ProductController extends AbstractController
      */
      public function index(ProductRepository $productRepository, Request $request): Response
     {
-         $search = new Search; 
+        $search = new Search; 
         $form = $this->createForm(SearchType::class, $search); 
 
         $form->handleRequest($request); 
@@ -110,9 +110,7 @@ class ProductController extends AbstractController
             ]);
 
         }
-        
-       
-
+          
         return $this->render('product/show.html.twig', [
             'product' => $product,
             'form' => $form->createView()

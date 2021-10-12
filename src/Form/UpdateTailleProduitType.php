@@ -8,7 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 
-class AjouterTailleProduitType extends AbstractType
+class UpdateTailleProduitType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {

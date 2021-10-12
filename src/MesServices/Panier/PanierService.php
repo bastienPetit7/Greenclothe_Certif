@@ -54,6 +54,7 @@ class PanierService
                 return; 
 
             }
+            
         }
 
         
@@ -70,17 +71,15 @@ class PanierService
 
     public function detaillerLeContenu(): array
     {
-        //Je cree un tableau vide que je vais remplir et renvoyer 
+        
         $contenu = [];
 
-        //Je vais chercher mon panier
+        
         $panier = $this->getPanier();
 
-        //Je boucle sur mon panier et ce qu il contient.
+        
         foreach($panier as $item)
         {
-            //Chaque item du panier a un Id et une Qty
-            //Grace a l id , je peux recuperer le produit lié à l'id
             $product = $this->productRepository->find($item->getId());
 
             if(!$product)
@@ -88,12 +87,10 @@ class PanierService
                continue; 
             }
 
-            //Je vais chercher la quantité de l item
+     
+            
             $qty = $item->getQty();
 
-            //J ajoute le produit que j ai trouve en bdd et sa quantite dans une nouvelle classe
-            //Une classe qui va vraiment representer le produit reel
-            //J ajoute cet instance de la classe de Produit Reel dans le tableau à retourner
             $contenu[] = new PanierRealProduct($product,$qty, $item->getTaille());
         }
         
@@ -123,7 +120,7 @@ class PanierService
         return $total;
     }
 
-    public function supprimer(int $id, $taille = null) 
+    public function supprimer(int $id, $taille) 
     {
         
         $panier = $this->getPanier();

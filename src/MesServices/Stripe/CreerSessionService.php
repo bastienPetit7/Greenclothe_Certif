@@ -53,16 +53,16 @@ class CreerSessionService
             ];
         }
         // Product for stripe ===> Carrier infos
-        $produits_stripe[] = [
-            'price_data' => [
-                'currency' => 'eur',
-                'unit_amount' => $order->getCarrierPrice(),
-                'product_data' => [
-                    'name' => $order->getCarrierName()
-                ]
-            ],
-            'quantity' => 1
-        ];
+            $produits_stripe[] = [
+                'price_data' => [
+                    'currency' => 'eur',
+                    'unit_amount' => $order->getCarrierPrice(),
+                    'product_data' => [
+                        'name' => $order->getCarrierName()
+                    ]
+                ],
+                'quantity' => 1
+            ];
 
         
         return $produits_stripe;

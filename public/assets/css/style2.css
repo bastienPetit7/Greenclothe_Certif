@@ -941,7 +941,7 @@ h3{
       position: relative;
       width: 1200px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       grid-gap: 20px;
       padding: 20px;
   }
@@ -957,7 +957,7 @@ h3{
 
     position: relative;
     width: 100%;
-    height: 310px;
+    height: 510px;
     overflow: hidden;
 }
 
@@ -999,11 +999,11 @@ h3{
     right: 10px;
 }
 
-.action li{
+.action  li{
     position: relative;
     list-style: none;
-    width: 40px;
-    height: 40px;
+    width: 60px;
+    height: 60px;
     background: var(--main-white);
     display: flex;
     justify-content: center;
@@ -1011,13 +1011,13 @@ h3{
     margin: 4px;
     cursor: pointer;
     transition: transform 0.5s ;
-    transform: translateX(60px);
+    transform: translateX(85px);
 }
 
-.action li:nth-child(2){
+.action li:nth-child(3){
     transition-delay: 0.15s;
 }
-.action li:nth-child(3){
+.action li:nth-child(2){
     transition-delay: 0.3s;
 }
 
@@ -1396,7 +1396,7 @@ h3{
     }
 
     .active{
-        display: flex;
+        display: flex !important;
         border-left: 1px solid var(--blueLight-perso);
         border-right: 1px solid var(--blueLight-perso);
         border-bottom: 1px solid var(--blueLight-perso);
@@ -1527,4 +1527,43 @@ h3{
     background: var(--greenLight-perso) ;
     padding: 20px;
     margin-top: 10px;
+}
+
+
+/* ======================== Page Products Index ================================== */
+
+.form-filter form{
+    border: 1px solid #333;
+    display: flex;
+    justify-content: center;
+    width: 88%;
+    margin: 0 auto;
+    
+}
+
+.form-filter form .form-group{
+    display: flex;
+    justify-content: center;
+}
+
+#categories {
+    display: flex;
+    justify-content: center;
+    
+}
+
+#categories .form-check{
+    padding: 18px; 
+}
+
+.btn-submit-filter{
+    border: 1px solid #333;
+    padding: 10px 25px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-submit-filter:hover{
+    background-color: var(--main-marin-blue);
+    color: white;
+
 }

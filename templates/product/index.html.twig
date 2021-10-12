@@ -33,11 +33,13 @@
 
             <div class="row">
 
-                <div class="col-3">
+                <div class="col-12 form-filter  " id="filterForm">
                     {{form(form)}}
                 </div>
 
-                <div class="col-9 d-flex justify-content-center align-items-center body-collection mb-5">
+            
+
+                <div class="col-12 d-flex justify-content-center align-items-center body-collection mb-5">
                     <div class="container-collection">
 
 
@@ -51,13 +53,26 @@
                                     <div class="img-box">
                                         <img src="/assets/ressources/img/uploads/products/{{product.image}}" alt="{{product.name}}">
                                         <ul class="action">
-                                        
-                                            <li>
-                                                <a href=" {{ path('product_show',{'slug': product.slug })}}" class="text-dark">
+                                            <li class="li">
+                                                <a href=" {{ path('product_show',{'slug': product.slug })}}" class="text-dark ">
                                                     <i class="fa fa-eye" aria-hidden="true"></i>
                                                     <span>View Details</span>
                                                 </a>
                                             </li>
+                                            
+                                            <li class="li">
+                                                <a href="{{path('ajouter_panier', {'id' : product.id})}}" class="text-dark ">
+                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                    <span>Add to cart</span>
+                                                </a>
+                                            </li>
+                                            <li class="li">
+                                                <a href="#" class="text-dark">
+                                                    <i class="fa fa-heart" aria-hidden="true"></i>
+                                                    <span>Add to Wishlist</span>
+                                                </a>
+                                            </li>
+                                            
                                             
                                         </ul>
                                     </div>
