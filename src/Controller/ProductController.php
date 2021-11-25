@@ -34,10 +34,15 @@ class ProductController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid())
         {
-             $products = $productRepository->findWithSearch($search);
+            
+            $products = $productRepository->findWithSearch($search);
+            shuffle($products);
+            // dd($products);
+
         } else {
             
             $products = $productRepository->findAll();
+            shuffle($products);
         }
 
 
@@ -89,31 +94,49 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/{slug}", name="product_show")
+     * @Route("/{slug}/{ancienneTaille?null}", name="product_show")
      */
-    public function show(string $slug, ProductRepository $productRepository, Request $request, PanierService $panierService): Response
+    public function show(string $slug, $ancienneTaille,  ProductRepository $productRepository, Request $request, PanierService $panierService): Response
     {
         $product = $productRepository->findOneBySlug($slug); 
         $form= $this->createForm(AjouterTailleProduitType::class); 
         $form->handleRequest($request); 
+        $routeARediriger = $request->query->get('redirige');
+    
+
 
         if($form->isSubmitted() && $form->isValid())
         {
             $taille = $form->get('taille')->getData(); 
             
-            $panierService->ajouter($product->getId(), $taille); 
+            if($routeARediriger){
+                $panierService->supprimer($product->getId(), $ancienneTaille);
 
-            $this->addFlash('success', 'votre produit a bien été ajouter au panier'); 
+                $panierService->ajouter($product->getId(), $taille);
+
+                $this->addFlash('success', 'La taille a bien été modifié.'); 
+
+                return $this->redirectToRoute('panier_detail');
+
+            } else {
+
+                $panierService->ajouter($product->getId(), $taille); 
+    
+                $this->addFlash('success', 'votre article a bien été ajouté à votre panier.'); 
+
+                return $this->redirectToRoute('product_show', [
+                    'slug' => $slug     
+                ]);
+            }
+
             
-            return $this->redirectToRoute('product_show', [
-                'slug' => $slug
-            ]);
 
         }
           
         return $this->render('product/show.html.twig', [
             'product' => $product,
             'form' => $form->createView()
+            
         ]);
     }
 

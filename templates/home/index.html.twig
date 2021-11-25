@@ -1,10 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil{% endblock %}
+{% block title %}Bienvenu chez Greenclothe{% endblock %}
 
 {% block body %}
 
-    <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+   
+        
+        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
             <ol class="carousel-indicators">
                 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
@@ -15,7 +17,7 @@
                 <div class="carousel-item active">
 
                     <img src=" {{asset('assets/ressources/img/aviv-rachmadian-7F7kEHj72MQ-unsplash.jpg')}} " class="d-block img-fluid"
-                        alt="...">
+                        alt="image de presentation de Greenclothe">
                     <div class="carousel-caption">
                         <h2 class="carou-caption-title">Summer discount</h2>
                         <h3 class="carou-caption-sub">Le meilleur de l'été à 40%</h3>
@@ -25,16 +27,18 @@
                 </div>
                 <div class="carousel-item">
                     <img src=" {{asset('assets/ressources/img/hannah-morgan-ycVFts5Ma4s-unsplash.jpg')}} " class="d-block  img-fluid"
-                        alt="...">
+                        alt="image de presentation de Greenclothe">
                 </div>
                 <div class="carousel-item">
                     <img src=" {{asset('assets/ressources/img/keagan-henman-xPJYL0l5Ii8-unsplash (1).jpg')}} " class="d-block  img-fluid"
-                        alt="...">
+                        alt="image de presentation de Greenclothe">
                 </div>
             </div>
 
 
         </div>
+
+    
 
         <!-- Section Jumbotron -->
 
@@ -57,201 +61,76 @@
 
     <!-- Section Card-->
     <section class="py-5">
-        <div class="container  px-4 px-lg-5 mt-5">
-            <div class="row  justify-content-center my-4">
-
-                <!-- Debut Carte -->
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-5">
-                    <a href="page_produit.htm" class="card-link">
-                        <div class="card card-accueil  h-100  ">
-                            <!-- Product image-->
-                            <img class="card-img-top" src=" {{asset('assets/ressources/img/t-shirt/homme/tshirt_homme_1.jpg')}} "
-                                alt="..." />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Fancy Product</h5>
-                                    <!-- Product price-->
-                                    $40.00 - $80.00
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View
-                                        options</a>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <!-- Fin Carte -->
-
-                <!-- Debut Carte -->
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-5">
-                    <a href="page_produit.htm" class="card-link">
-                    <div class="card card-accueil  h-100 ">
-                        <!-- Sale badge-->
-                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
-                        </div>
-                        <!-- Product image-->
-                        <img class="card-img-top" src=" {{ asset('assets/ressources/img/pull_sweat/femme/sweat_femme_1.jpg')}} " alt="..." />
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder">Special Item</h5>
-                                <!-- Product reviews-->
-                                <div class="d-flex justify-content-center small text-warning mb-2">
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                </div>
-                                <!-- Product price-->
-                                <span class="text-muted text-decoration-line-through">$20.00</span>
-                                $18.00
-                            </div>
-                        </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-                            </div>
-                        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <div class="meilleurs-ventes-title">
+                    
+                            <h3 class="pl-3 h1">Nos meilleurs ventes</h3>
                     </div>
-                    </a>
                 </div>
-                <!-- Fin Carte -->
+                <div class="col-12 d-flex justify-content-center align-items-center body-collection mb-5">
+                            <div class="container-collection">
+                            {% for product in products %}
+                                
+                                <!-- Debut carte -->
+                                        
+                                    <div class="card-collection">
+                                        <a href=" {{path('product_show',{'slug': product.slug })}} ">
+                                        <div class="img-box">
+                                            <img src="/assets/ressources/img/uploads/products/{{product.image}}" alt="{{product.name}}">
+                                            {# <ul class="action">
+                                                <li class="li">
+                                                    <a href=" {{ path('product_show',{'slug': product.slug })}}" class="text-dark ">
+                                                        <i class="fa fa-eye" aria-hidden="true"></i>
+                                                        <span>View Details</span>
+                                                    </a>
+                                                </li>
+                                                
+                                                <li class="li">
+                                                    <a href="{{path('ajouter_panier', {'id' : product.id})}}" class="text-dark ">
+                                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                                        <span>Add to cart</span>
+                                                    </a>
+                                                </li>
+                                                <li class="li">
+                                                    <a href="#" class="text-dark">
+                                                        <i class="fa fa-heart" aria-hidden="true"></i>
+                                                        <span>Add to Wishlist</span>
+                                                    </a>
+                                                </li>
+                                                
+                                                
+                                            </ul> #}
+                                        </div>
+                                        <div class="content-card-collection">
+                                            <div class="product-name-collection">
+                                                <h3> {{product.subtitle}} </h3>
+                                            </div>
+                                            <div class="price-rating">
+                                                <h2> {{product.price | amount}} </h2>
+                                            
+                                                {# <div class="rating">
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa grey fa-star" aria-hidden="true"></i>
+                                                </div> #}
 
-                <!-- Debut Carte -->
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-5">
-                    <a href="page_produit.htm" class="card-link">
-                    <div class="card card-accueil  h-100  ">
-                        <!-- Sale badge-->
-                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
-                        </div>
-                        <!-- Product image-->
-                        <img class="card-img-top" src=" {{asset('assets/ressources/img/chemise/homme/chemise_homme_1.jpg')}} " alt="..." />
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder">Sale Item</h5>
-                                <!-- Product price-->
-                                <span class="text-muted text-decoration-line-through">$50.00</span>
-                                $25.00
-                            </div>
-                        </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-                            </div>
-                        </div>
+                                            </div>
+                                        </div>
+                                        </a>
+                                    </div>
+                                <!-- Fin Carte -->
+
+                            {% endfor %}
+
+
+
                     </div>
-                    </a>
                 </div>
-                <!-- Fin Carte -->
-
-            </div>
-            <div class="row justify-content-center">
-                <!-- Debut Carte -->
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-5">
-                    <a href="page_produit.htm" class="card-link">
-                    <div class="card card-accueil  h-100 ">
-                        <!-- Sale badge-->
-                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
-                        </div>
-                        <!-- Product image-->
-                        <img class="card-img-top" src=" {{asset('assets/ressources/img/accessoire/femme/accessoire_femme_1.jpg')}} "
-                            alt="..." />
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder">Sale Item</h5>
-                                <!-- Product price-->
-                                <span class="text-muted text-decoration-line-through">$50.00</span>
-                                $25.00
-                            </div>
-                        </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    </a>
-                </div>
-                <!-- Fin Carte -->
-
-
-                <!-- Debut Carte -->
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-5">
-                    <a href="page_produit.htm" class="card-link">
-                    <div class="card card-accueil  h-100 ">
-                        <!-- Sale badge-->
-                        <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale
-                        </div>
-                        <!-- Product image-->
-                        <img class="card-img-top" src=" {{asset('assets/ressources/img/chaussure/homme/chaussure_homme_1.jpg')}} "
-                            alt="..." />
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder">Special Item</h5>
-                                <!-- Product reviews-->
-                                <div class="d-flex justify-content-center small text-warning mb-2">
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                    <div class="bi-star-fill"></div>
-                                </div>
-                                <!-- Product price-->
-                                <span class="text-muted text-decoration-line-through">$20.00</span>
-                                $18.00
-                            </div>
-                        </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a>
-                            </div>
-                        </div>
-                    </div>
-                    </a>
-                </div>
-                <!-- Fin Carte -->
-
-
-
-                <!-- Debut Carte -->
-                <div class="col-md-4 col-sm-6 col-xs-12 mb-5">
-                    <a href="page_produit.htm" class="card-link">
-                    <div class="card card-accueil  h-100 ">
-                        <!-- Product image-->
-                        <img class="card-img-top" src=" {{asset('assets/ressources/img/manteau/femme/manteau_femme_1.jpg')}} " alt="..." />
-                        <!-- Product details-->
-                        <div class="card-body p-4">
-                            <div class="text-center">
-                                <!-- Product name-->
-                                <h5 class="fw-bolder">Fancy Product</h5>
-                                <!-- Product price-->
-                                $120.00 - $280.00
-                            </div>
-                        </div>
-                        <!-- Product actions-->
-                        <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                            <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a>
-                            </div>
-                        </div>
-                    </div>
-                    </a>
-                </div>
-                <!-- Fin Carte -->
-
-
+            
             </div>
         </div>
     </section>
@@ -266,8 +145,9 @@
                 <div class="col-12 px-3 mb-3">
                     <p class="sous-titre-story-telling">Nous vous faisons CONFIANCE pour nous faire CONFIANCE !</p>
                 </div>
+            </div>
             <div class="row text-center px-3 mt-5">
-                <div class="col-md-4 col-sm-12">
+                <div class="col-md-4 col-12">
                     <i class="fab fa-pagelines fa-big mb-5 "></i>
                     <h3 class="text-white">Matière écologique</h3>
                     <p class="text-white line-height-plus">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quaerat
@@ -275,7 +155,7 @@
                         quisquam natus?</p>
 
                 </div>
-                <div class="col-md-4 col-sm-12">
+                <div class="col-md-4 col-12">
                     <i class="fas fa-recycle fa-big mb-5"></i>
                     <h3 class="text-white">100% recyclable</h3>
                     <p class="text-white line-height-plus">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quaerat
@@ -283,7 +163,7 @@
                         quisquam natus?</p>
 
                 </div>
-                <div class="col-md-4 col-sm-12">
+                <div class="col-md-4 col-12">
                     <i class="fas fa-dove fa-big mb-5"></i>
                     <h3 class="text-white">Nous protégeons les oiseaux</h3>
                     <p class="text-white line-height-plus">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quaerat
@@ -292,10 +172,10 @@
 
                 </div>
             </div>
-            </div>
+           
             <div class="row text-center py-5">
                 <div class="col-12">
-                    <button class="btn btn-outline-light p-3 px-5 rounded-pill" >contactez-nous</button>
+                    <a class="btn btn-outline-light p-3 rounded-pill" href="{{path('contact')}}" >contactez-nous</a>
                 </div>
             </div>
         </div>
@@ -332,7 +212,7 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="overlay"></div>
-                            <img src=" {{asset('assets/ressources/img/forest_parallax.jpg')}} " class="d-block w-100" alt="...">
+                            <img src=" {{asset('assets/ressources/img/forest_parallax.jpg')}} " class="d-block w-100" alt="Image sur l'actualité de Greenclothe">
                             <div class="carousel-caption">
                                 <h2 class="carou-caption-title">Greenclothe participe</h2>
                                 <h3 class="carou-caption-sub">luttons ensemble pour le recyclage participatif</h3>
@@ -342,7 +222,7 @@
                         </div>
                         <div class="carousel-item">
                             <div class="overlay"></div>
-                            <img src=" {{asset('assets/ressources/img/Valeurs/bike_delivery.jpg')}} " class="d-block w-100" alt="...">
+                            <img src=" {{asset('assets/ressources/img/Valeurs/bike_delivery.jpg')}} " class="d-block w-100" alt="Image sur l'actualité de Greenclothe">
                             <div class="carousel-caption">
                                 <h2 class="carou-caption-title">Livraison à vélo</h2>
                                 <h3 class="carou-caption-sub">un circuit cours avec moins de 0,4% d'émission de CO2</h3>
@@ -352,7 +232,7 @@
                         </div>
                         <div class="carousel-item">
                             <div class="overlay"></div>
-                            <img src=" {{asset('assets/ressources/img/Valeurs/manif_eco_2.jpg')}} " class="d-block w-100" alt="...">
+                            <img src=" {{asset('assets/ressources/img/Valeurs/manif_eco_2.jpg')}} " class="d-block w-100" alt="Image sur l'actualité de Greenclothe">
                             <div class="carousel-caption">
                                 <h2 class="carou-caption-title">Greenclothe soutient</h2>
                                 <h3 class="carou-caption-sub">ensemble vers un monde responsable</h3>

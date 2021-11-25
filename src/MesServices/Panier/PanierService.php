@@ -8,11 +8,8 @@ use App\MesServices\Panier\PanierItem;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 class PanierService 
-
 {
-
     protected $session;
-
     protected $productRepository; 
 
     public function __construct(SessionInterface $session, ProductRepository $productRepository)
@@ -20,7 +17,6 @@ class PanierService
         $this->session = $session; 
         $this->productRepository = $productRepository; 
     }
-
 
     public function getPanier()
     {
@@ -37,12 +33,9 @@ class PanierService
         $this->sauvegarderPanier([]);
     }
 
-
     public function ajouter(int $id, $taille = null)
     {
-
         $panier = $this->getPanier(); 
-
 
         foreach($panier as $item)
         {
@@ -52,12 +45,9 @@ class PanierService
                 
                 $this->sauvegarderPanier($panier); 
                 return; 
-
-            }
-            
+            }          
         }
-
-        
+       
         $nouvelItem= new PanierItem();
         $nouvelItem->setId($id); 
         $nouvelItem->setTaille($taille);
@@ -70,25 +60,18 @@ class PanierService
     }
 
     public function detaillerLeContenu(): array
-    {
-        
-        $contenu = [];
-
-        
+    {    
+        $contenu = [];     
         $panier = $this->getPanier();
-
-        
+    
         foreach($panier as $item)
         {
             $product = $this->productRepository->find($item->getId());
-
             if(!$product)
             {
                continue; 
             }
-
-     
-            
+         
             $qty = $item->getQty();
 
             $contenu[] = new PanierRealProduct($product,$qty, $item->getTaille());
@@ -100,15 +83,12 @@ class PanierService
     public function getTotal()
     {
         $total = 0;
-
         //Je vais chercher mon panier
         $panier = $this->getPanier();
-
         //Je boucle sur mon panier et ce qu il contient.
         foreach($panier as $item)
         {
             $product = $this->productRepository->find($item->getId());
-
             if(!$product)
             {
                continue; 
@@ -121,14 +101,10 @@ class PanierService
     }
 
     public function supprimer(int $id, $taille) 
-    {
-        
-        $panier = $this->getPanier();
-
-        
+    {      
+        $panier = $this->getPanier();     
         foreach($panier as $item)
-        {
-            
+        {        
             if($item->getId() === $id && $item->getTaille() === $taille)
             {
                 $key = array_search($item,$panier);

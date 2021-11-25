@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Product{% endblock %}
+{% block title %}Produit {{product.name}}{% endblock %}
 
 {% block body %}
 
@@ -48,16 +48,29 @@
                 {% if product.taille | length > 0 %}
                 
                     {{form_start(form)}}
+
                     {{form_row(form.taille)}}
                     
+                    
+                    {% if app.request.query.get('redirige') == 'edit_taille' %}
+                    
+                     <button type="submit" class="buy-btn btn btn-warning">Modifier la taille</button>
 
-                <button type="submit" class="buy-btn btn btn-warning">Add to Cart</button>
+                        {% else %}
+                            
+                     <button type="submit" class="buy-btn btn btn-warning">Ajouter au panier</button>
+                    {% endif %}
+
                     {{form_end(form)}}
 
                     {% else %}
+                        
                         <a href=" {{path('ajouter_panier', { 'id' : product.id } )}} " class="buy-btn btn btn-warning">Add to Cart</a>
-
                 {% endif %}
+
+
+                    
+                        
                 <h4 class="mt-5 mb-5">{{product.subtitle}}</h4>
                 <span>{{product.description}}</span>
             </div>

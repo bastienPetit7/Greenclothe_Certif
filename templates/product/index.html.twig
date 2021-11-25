@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Product index{% endblock %}
+{% block title %}Collection Greenclothe{% endblock %}
 
 {% block body %}
 
@@ -31,15 +31,15 @@
         <!-- --------- Espace carte produit -------------- -->
         <div class="container-fluid">
 
-            <div class="row">
+            <div class="row ">
 
-                <div class="col-12 form-filter  " id="filterForm">
+                <div class="col-12 col-md-3 form-filter  " id="filterForm">
                     {{form(form)}}
                 </div>
 
             
 
-                <div class="col-12 d-flex justify-content-center align-items-center body-collection mb-5">
+                <div class="col-12 col-md-9 d-flex justify-content-center align-items-center body-collection mb-5">
                     <div class="container-collection">
 
 
@@ -52,7 +52,7 @@
                                     <a href=" {{path('product_show',{'slug': product.slug })}} ">
                                     <div class="img-box">
                                         <img src="/assets/ressources/img/uploads/products/{{product.image}}" alt="{{product.name}}">
-                                        <ul class="action">
+                                        {# <ul class="action">
                                             <li class="li">
                                                 <a href=" {{ path('product_show',{'slug': product.slug })}}" class="text-dark ">
                                                     <i class="fa fa-eye" aria-hidden="true"></i>
@@ -74,7 +74,7 @@
                                             </li>
                                             
                                             
-                                        </ul>
+                                        </ul> #}
                                     </div>
                                     <div class="content-card-collection">
                                         <div class="product-name-collection">

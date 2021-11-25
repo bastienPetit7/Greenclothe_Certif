@@ -17,14 +17,14 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            // ->add('string', TextType::class, [
-            //     'label' => 'Filtrer', 
-            //     'required' => false, 
-            //     'attr' => [
-            //         'placeholder' => 'Rechercher un article', 
-            //         'class' => 'form-control-sm'
-            //     ]
-            // ])
+            ->add('string', TextType::class, [
+                'label' => false, 
+                'required' => false, 
+                'attr' => [
+                    'placeholder' => 'Rechercher un article', 
+                    'class' => 'form-control-sm'
+                ]
+            ])
 
             ->add('categories', EntityType::class, [
                 'label' => false, 

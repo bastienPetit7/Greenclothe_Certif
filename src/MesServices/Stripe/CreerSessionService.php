@@ -11,11 +11,8 @@ use Symfony\Component\Security\Core\Security;
 class CreerSessionService 
 {
     protected $keySecret;
-
     protected $panierService;
-
     protected $security;
-
     protected $entityManager;
 
     public function __construct($keySecret, PanierService $panierService, Security $security, EntityManagerInterface $entityManager)
@@ -28,7 +25,7 @@ class CreerSessionService
 
     public function getDomain()
     {
-        return 'https://localhost:8000';
+        return 'https://www.bastienpetit.fr';
     }
 
     public function getItems($order)
@@ -37,8 +34,6 @@ class CreerSessionService
 
         $products = $this->panierService->detaillerLeContenu();
         
-      
-
         foreach( $products as $item)
         {
             $produits_stripe[] = [
@@ -52,7 +47,7 @@ class CreerSessionService
                 'quantity' => $item->qty
             ];
         }
-        // Product for stripe ===> Carrier infos
+        // Produit pour stripe ===> Les infos du transporteur
             $produits_stripe[] = [
                 'price_data' => [
                     'currency' => 'eur',
@@ -64,7 +59,6 @@ class CreerSessionService
                 'quantity' => 1
             ];
 
-        
         return $produits_stripe;
     }
 

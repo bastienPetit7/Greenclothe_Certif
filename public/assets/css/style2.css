@@ -181,6 +181,10 @@ h1{
 
 /* ========== Section Card ================== */
 
+.meilleurs-ventes-title{
+    width: 80%;
+}
+
 .card {
     position: relative;
     display: -ms-flexbox;
@@ -925,39 +929,40 @@ h3{
     letter-spacing: .1rem;
     
 }
-  .cont-collection-title p{
+.cont-collection-title p{
       font-size: 0.8rem;
       /* color: var(--main-marin-blue); */
-  }
+}
 
-  .body-collection{
+.body-collection{
       /* min-height: 100vh; */
       background-color: var(--main-white);
       /* cursor: pointer; */
 
-  }
+}
 
-  .container-collection{
+.container-collection{
       position: relative;
-      width: 1200px;
+      width: 80%;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
       grid-gap: 20px;
       padding: 20px;
-  }
+}
 
-  .container-collection .card-collection{
+
+.container-collection .card-collection{
       width: 100%;
       background:#fff;
       /* border: 1px solid var(--main-marin-blue); */
       border-radius: 5px;
-  }
+}
 
 .container-collection .card-collection .img-box{
 
     position: relative;
     width: 100%;
-    height: 510px;
+    height: 410px;
     overflow: hidden;
 }
 
@@ -1126,6 +1131,12 @@ h3{
 .img-product-show{
     height: 500px;
     object-fit: contain;
+    cursor: pointer;
+    transition: all 0.6s ease-in-out;
+}
+
+.img-product-show:hover{
+    transform: scale(1.4);
 }
 
 .small-img-col {
@@ -1533,11 +1544,15 @@ h3{
 /* ======================== Page Products Index ================================== */
 
 .form-filter form{
-    border: 1px solid #333;
+    border: 1px solid var(--green-perso);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 20px;
     width: 88%;
     margin: 0 auto;
+    position: sticky;
+    top: 20px;
     
 }
 
@@ -1546,20 +1561,22 @@ h3{
     justify-content: center;
 }
 
-#categories {
+/* #categories {
     display: flex;
     justify-content: center;
     
-}
+} */
 
 #categories .form-check{
-    padding: 18px; 
+    padding: 6px; 
+    color: var(--main-marin-blue);
 }
 
 .btn-submit-filter{
     border: 1px solid #333;
     padding: 10px 25px;
     transition: all 0.2s ease-in-out;
+    width: 100%;
 }
 
 .btn-submit-filter:hover{

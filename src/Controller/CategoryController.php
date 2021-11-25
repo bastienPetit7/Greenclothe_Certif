@@ -79,6 +79,7 @@ class CategoryController extends AbstractController
     public function show(int $id, Category $category, ProductRepository $productRepository): Response
     {
         $products = $productRepository->findWithNavbar($id);
+        shuffle($products);
         
         return $this->render('category/show.html.twig', [
             'category' => $category,

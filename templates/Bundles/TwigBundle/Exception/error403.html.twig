@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Page non accessible{% endblock %}
+
+
+
+{% block body %}
+
+
+    <div class="container-fluid py-5">
+        <a href=" {{path('product_index')}} " class=" text-decoration-none  ">
+            <div class="cont-retour-achat d-flex align-items-center justify-content-center px-2">
+                <i class="fas fa-caret-left mr-1 "></i>
+                <span class="py-2 font-weight-bold ">Retourner sur le site </span>
+            </div>
+        </a>
+        
+        <div class="p-4 erreur-container d-flex flex-column align-items-center justify-content-center">
+        
+            <h1 class="my-4">Woooppps... </h1>
+
+            <p class="my-4">Il semblerait que vous n'avez pas accés à cette page.</p>
+
+
+            <h3 class="my-4">Erreur {{status_code}} </h3>
+
+        </div>
+        
+    </div>
+
+    
+
+
+
+{% endblock %}

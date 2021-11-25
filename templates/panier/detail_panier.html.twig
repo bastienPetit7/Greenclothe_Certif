@@ -1,5 +1,7 @@
 {% extends "base.html.twig" %}
 
+{% block title %}Mon panier{% endblock %}
+
 
 {% block body %}
 
@@ -86,10 +88,14 @@
                                         </div>
 
                                        {% else %}
-                                        {{form_start(form, {action:path('ajouter_panier', {'id' : item.product.id })})}}
-                                        {{form_row(form.taille)}}
-                                        <button type="submit" class="btn btn-link link-remove-card">valider votre taille</button>     
-                                        {{form_end(form)}}   
+
+                                        {# {{form_start(form, {action:path('ajouter_panier', {'id' : item.product.id })})}}
+
+                                            {{form_row(form.taille)}}
+
+                                            <button type="submit" class="btn btn-link link-remove-card">valider votre taille</button>  
+
+                                        {{form_end(form)}}    #}
                                         
                                     {% endif %}
 
@@ -98,6 +104,9 @@
                                          
                                         <a href=" {{path('panier_supprimer_article', {'id' : item.product.id, 'taille' : item.taille})}}" id="deleteCardItem" class=" link-remove-card">
                                         <i class="far fa-trash-alt mr-1"style="font-size: 0.8rem;"></i><small>Supprimer</small></a>
+
+                                        <a href=" {{path('product_show', {'slug' : item.product.slug, 'ancienneTaille' : item.taille})}}?redirige=edit_taille"  class=" link-remove-card ml-2">
+                                        <i class="far fa-edit mr-1"style="font-size: 0.8rem;"></i><small>Modifier la taille</small></a>
                                     </div>
 
                                 </div>

@@ -37,6 +37,7 @@ class ProductRepository extends ServiceEntityRepository
             $query = $query 
                 ->andWhere('c.id IN (:categories)')
                 ->setParameter('categories', $search->categories); 
+                
         }
 
          if(!empty($search->string))
@@ -48,6 +49,7 @@ class ProductRepository extends ServiceEntityRepository
 
         return $query->getQuery()->getResult(); 
     }
+    
 
      public function findWithNavbar(int $id)
     {

@@ -21,7 +21,8 @@ class UpdateTailleProduitType extends AbstractType
                     'L' => 'L',
                     'XL' => 'XL'
                 ],
-                'data' => 'L'
+                'data' => 'L',
+                'required' => false
              
             ])
         ;

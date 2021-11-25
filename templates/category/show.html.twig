@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Categorie index{% endblock %}
+{% block title %}Page {{category.name}}{% endblock %}
 
 {% block body %}
   
@@ -41,7 +41,7 @@
 
                                     <div class="img-box">
                                         <img src="/assets/ressources/img/uploads/products/{{product.image}}" alt="{{product.name}}">
-                                        <ul class="action">
+                                        {# <ul class="action">
                                         
                                             <li>
                                             <a href=" {{ path('product_show',{'slug': product.slug })}}" class="text-dark">
@@ -50,7 +50,7 @@
                                             </a>
                                             </li>
                                             
-                                        </ul>
+                                        </ul> #}
                                     </div>
                                     <div class="content-card-collection">
                                         <div class="product-name-collection">

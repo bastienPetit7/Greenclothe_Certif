@@ -74,7 +74,7 @@ class OrderController extends AbstractController
            
             
             // Création de chaine de charactères avec toutes les infos necessaire a stocker deans order->setDelivery(); 
-             $delivery_content = $delivery->getFirstname().' '.$delivery->getLastname();
+            $delivery_content = $delivery->getFirstname().' '.$delivery->getLastname();
             $delivery_content .= '<br/>'. $delivery->getPhone();
  
 

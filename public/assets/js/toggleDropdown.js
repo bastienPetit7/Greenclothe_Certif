@@ -1,9 +1,7 @@
+
+
 const chevronDown = document.getElementById('chevronDropdown'); 
 const menuAcount = document.getElementById('menuAcount'); 
-
-
-
-
 
 
 function checkChevron(){

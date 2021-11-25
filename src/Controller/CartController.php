@@ -35,38 +35,20 @@ class CartController extends AbstractController
         {
             throw $this->createNotFoundException("Le produit n'existe plus. ");
         }
-
-        // Si la taille n'as pas été selectionné par le client en amont du panier 
-        $form= $this->createForm(UpdateTailleProduitType::class); 
-        $form->handleRequest($request); 
-
-        if($form->isSubmitted() && $form->isValid())
-        {
-            
-            $taille = $form->get('taille')->getData(); 
-
-            $this->panierService->supprimer($product->getId(), 'null'); 
-
-            $this->panierService->ajouter($product->getId(), $taille); 
-
-            $this->addFlash('success', 'La taille de votre produit a bien été mis à jour'); 
-            
-            return $this->redirectToRoute('panier_detail');
-        }
-
+    
         $this->panierService->ajouter($id, $taille); 
-
+        // Traitement à faire lorsque nous ajoutons un produit via l'ajout de quantié directement dans le panier
         $routeARediriger = $request->query->get('redirige');
 
         if($routeARediriger)
         {
             return $this->redirectToRoute('panier_detail');
         }
+        // Récupération de l'id de la catégorie du produit ajouté afin de rediriger vers la page produit de cette catégorie
+        $getId = $productRepository->findCategoryId($id);    
 
-        $getId = $productRepository->findCategoryId($id);
+        $categoryId = $getId[1]["category_id"];      
         
-        $categoryId = $getId[1]["category_id"];
-         
         $this->addFlash('success', 'Le produit a bien été ajouté à votre panier');
 
         return $this->redirectToRoute('category_show',[
@@ -75,21 +57,17 @@ class CartController extends AbstractController
 
     }
 
-
     /**
      * @Route("/panier/detail", name="panier_detail")
      */
     public function voirMonPanier(Request $request)
     {
-        $form= $this->createForm(UpdateTailleProduitType::class); 
-        $form->handleRequest($request); 
-
         
         
         return $this->render("panier/detail_panier.html.twig",[
             'panier' => $this->panierService->detaillerLeContenu() ,
-            'total' => $this->panierService->getTotal(), 
-            'form' => $form->createView()
+            'total' => $this->panierService->getTotal()
+           
         ]);
     }
 

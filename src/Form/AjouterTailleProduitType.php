@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class AjouterTailleProduitType extends AbstractType
 {
@@ -15,15 +15,18 @@ class AjouterTailleProduitType extends AbstractType
         $builder
            
             ->add('taille', ChoiceType::class, [
+                'placeholder' => 'Choisissez votre taille',
                 'choices' => [
                     'S' => 'S',
                     'M' => 'M',
                     'L' => 'L',
                     'XL' => 'XL'
                 ],
-                'data' => 'L'
+                // 'data' => 'L',
+                'required'=> true
              
             ])
+           
         ;
     }
 

@@ -24,9 +24,9 @@ class ProductCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-           TextField::new('name'), 
-           SlugField::new('slug')->setTargetFieldName('name'),
-           ImageField::new('image')
+            TextField::new('name'), 
+            SlugField::new('slug')->setTargetFieldName('name'),
+            ImageField::new('image')
                 ->setBasePath('assets/ressources/img/uploads/products')
                 ->setUploadDir('public/assets/ressources/img/uploads/products')
                 ->setUploadedFileNamePattern('[randomhash].[extension]')
@@ -34,7 +34,8 @@ class ProductCrudController extends AbstractCrudController
             TextField::new('subtitle'),
             TextareaField::new('description'), 
             BooleanField::new('isBest'), 
-            ChoiceField::new('taille')->setChoices(['S' => 's',
+            ChoiceField::new('taille')->setChoices([
+            'S' => 's',
             'M' => 'm',
             'L' => 'l',
             'XL' => 'xl',
@@ -42,7 +43,7 @@ class ProductCrudController extends AbstractCrudController
             
             MoneyField::new('price')->setCurrency('EUR'),
             AssociationField::new('category')
-           
+            
         ];
     }
     
