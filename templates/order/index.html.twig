@@ -22,12 +22,13 @@
                     {{form_start(form, {action:path('order_recap')})}}
                         {{form_label(form.addresses, 'Choisissez votre adresse de livraison')}}
                         <a href="{{path('account_create_address')}}">Ajouter une nouvelle adresse</a>
+
+                        {{form_row(form.addresses)}}
+                        {{form_row(form.carrier)}}
+
+                        <button type="submit" class="btn bouton-valid-commande  btn-sm d-md-block d-none">Valider ma commande</button>
                         
-                    {{form_end(form)}}
-
-                {% endset %}
-
-                {{formHtml|replace({'[br]' : '<br/>'}) | raw }}
+                    
 
             </div>
 
@@ -55,7 +56,17 @@
                     <hr class="perso_bg_orange">
                 {% endfor %}
             </div>
+
+                    <button type="submit" class="btn bouton-valid-commande  w-100 d-md-none d-block mt-3">Valider ma commande</button>
+
+
+                    {{form_end(form)}}
+
+                        {% endset %}
+
+                    {{formHtml|replace({'[br]' : '<br/>'}) | raw }}
         </div>
+
     </div>
 
 </div>

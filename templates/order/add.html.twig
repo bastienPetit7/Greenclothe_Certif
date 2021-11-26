@@ -15,59 +15,61 @@
     <div class="row order-set-up">
         <div class="col-md-6 col-12 w-100">
         
-        <strong> Mon adresse de livraison</strong>
-        <div  class="form-check-order-final">
-            {{address | raw}}
-        </div>
-        <hr>
-        <strong> Mon livreur</strong>
-        <div  class="form-check-order-final">
-            {{carrier.name}} <br>
-            {{carrier.description}} <br>
-            {{carrier.price | amount}}
+            <strong> Mon adresse de livraison</strong>
+            <div  class="form-check-order-final">
+                {{address | raw}}
+            </div>
+            <hr>
+            <strong> Mon livreur</strong>
+            <div  class="form-check-order-final">
+                {{carrier.name}} <br>
+                {{carrier.description}} <br>
+                {{carrier.price | amount}}
 
-        </div>
+            </div>
        
 
            
         </div>
-        <div class="col-md-6 col-12 border border-warning mx-auto ">
-            <strong class="text-center font-weight-bold d-block mx-auto mt-2">Ma commande</strong><hr>
+        <div class="col-md-6 col-12 mt-3 mt-md-0 ">
+            <div class="border border-warning mx-auto p-4">
+                <strong class="text-center font-weight-bold d-block mx-auto mt-2">Ma commande</strong><hr>
 
-            {% for item in cart %}
-               
-                <div class="row align-items-center ">
-                    <div class="col-3">
-                        <img class="img-fluid img-product-panier"src="/assets/ressources/img/uploads/products/{{item.product.image}}" alt="">
-                    </div>
-                    <div class="col-5">
-                       <strong>{{item.product.name}}</strong>  <br>
-                        <small> Taille: {{item.taille}} </small><br>
-                        <small>Qty : x {{ item.qty}}</small>
-                    </div>
-                    <div class="col-4">
-                      Prix : {{(item.product.price * item.qty) | amount}}
-                    </div>
+                    {% for item in cart %}
                     
-                </div>
-                <hr class="perso_bg_orange">
-            {% endfor %}
-            <div class="d-flex flex-column align-items-end mr-4">
-            <div class="mb-3">
-            <strong class="font-weight-bold perso_font_bold mr-2">Sous Total :  </strong> {{total | amount}} <br>
-            </div>
-            <div class="mb-3">
-            <strong class="font-weight-bold perso_font_bold mr-2">Frais de port :  </strong> {{carrier.price | amount}}<br>
-            </div>
-            <div class="mb-3">
-            <strong class="font-weight-bold perso_font_bold mr-2">Total : </strong>  {{ (total + carrier.price) | amount }}
-            </div>
+                        <div class="row align-items-center ">
+                            <div class="col-3">
+                                <img class="img-fluid img-product-panier"src="/assets/ressources/img/uploads/products/{{item.product.image}}" alt="">
+                            </div>
+                            <div class="col-5">
+                            <strong>{{item.product.name}}</strong>  <br>
+                                <small> Taille: {{item.taille}} </small><br>
+                                <small>Qty : x {{ item.qty}}</small>
+                            </div>
+                            <div class="col-4">
+                            Prix : {{(item.product.price * item.qty) | amount}}
+                            </div>
+                            
+                        </div>
+                        <hr class="perso_bg_orange">
+                    {% endfor %}
+                <div class="d-flex flex-column align-items-end mr-4">
+                    <div class="mb-3">
+                    <strong class="font-weight-bold perso_font_bold mr-2">Sous Total :  </strong> {{total | amount}} <br>
+                    </div>
+                    <div class="mb-3">
+                    <strong class="font-weight-bold perso_font_bold mr-2">Frais de port :  </strong> {{carrier.price | amount}}<br>
+                    </div>
+                    <div class="mb-3">
+                    <strong class="font-weight-bold perso_font_bold mr-2">Total : </strong>  {{ (total + carrier.price) | amount }}
+                    </div>
 
+                </div>
+                <form action="{{ path('stripe_checkout', {'reference' : reference }) }}" method="POST">
+                        <button class="btn btn-warning mt-3 mb-2 w-100  font-weight-bold" type="submit" id="checkout-button">Payer | {{ (total + carrier.price) | amount }}</button>
+                </form>
+                {# <a href=" {{path('stripe_checkout')}} " class="btn btn-warning mt-3 mb-2 w-100  font-weight-bold  ">Payer | {{ (total + carrier.price) | amount }}</a> #}
             </div>
-            <form action="{{ path('stripe_checkout', {'reference' : reference }) }}" method="POST">
-                    <button class="btn btn-warning mt-3 mb-2 w-100  font-weight-bold" type="submit" id="checkout-button">Payer | {{ (total + carrier.price) | amount }}</button>
-            </form>
-            {# <a href=" {{path('stripe_checkout')}} " class="btn btn-warning mt-3 mb-2 w-100  font-weight-bold  ">Payer | {{ (total + carrier.price) | amount }}</a> #}
         </div>
     </div>
 

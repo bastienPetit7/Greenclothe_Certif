@@ -4,13 +4,13 @@
 
 {% block body %}
 
-    <div class="container mb-5 py-4">
+  <div class="row mb-5 py-4">
 
-      <div class="mb-5">
-        <h2 class="text-center">Mes commandes</h2>
-        <p class="text-center">C'est dans cette espace que vous allez pouvoir gérer vos commandes</p>
-      
-      </div>
+        <div class="mb-5">
+          <h2 class="text-center">Mes commandes</h2>
+          <p class="text-center">C'est dans cette espace que vous allez pouvoir gérer vos commandes</p>
+        
+        </div>
 
 
         
@@ -25,31 +25,31 @@
         {% else %}
 
             
-            <table class="table my-5">
-      <thead>
-        <tr>
-          <th scope="col">Référence</th>
-          <th scope="col">Passée le</th>
-          <th class="text-center" scope="col">Produit(s)</th>
-          <th class="text-center"scope="col">Total</th>
-          <th class="text-right" scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-            {% for order in orders %}
-              
-                <tr>
-                    <td > <span class="badge badge-secondary">{{order.reference}}</span> </td>
-                    <th > {{order.createdAT | date('d/m/Y')}} </th>
-                    <td class="text-center"> {{order.orderDetails | length}}</td>
-                    <td class="text-center"> {{(order.carrierPrice + order.getTotal) | amount}} </td>
-                    <td class="text-right"> <a href=" {{path('account_order_show', {'reference' : order.reference})}} "> voir ma commande</a></td>
-                </tr>
-                            
-            {% endfor %}
-        
-      </tbody>
-    </table>
+      <table class="table my-5">
+        <thead>
+          <tr>
+            <th scope="col">Référence</th>
+            <th scope="col" class="d-none d-md-table-cell">Passée le</th>
+            <th class="text-center d-none d-md-table-cell" scope="col">Produit(s)</th>
+            <th class="text-center d-none d-md-table-cell"scope="col">Total</th>
+            <th class="text-right" scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+              {% for order in orders %}
+                
+                  <tr>
+                      <td > <span class="badge badge-secondary">{{order.reference}}</span> </td>
+                      <th class="d-none d-md-table-cell" > {{order.createdAT | date('d/m/Y')}} </th>
+                      <td class="text-center d-none d-md-table-cell"> {{order.orderDetails | length}}</td>
+                      <td class="text-center d-none d-md-table-cell"> {{(order.carrierPrice + order.getTotal) | amount}} </td>
+                      <td class="text-right"> <a href=" {{path('account_order_show', {'reference' : order.reference})}} "> voir ma commande</a></td>
+                  </tr>
+                              
+              {% endfor %}
+          
+        </tbody>
+      </table>
               
           
         
@@ -57,8 +57,7 @@
         {% endif %}
 
 
-    </div>
-
   </div>
+</div>
 
 {% endblock %}

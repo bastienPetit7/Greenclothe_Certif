@@ -36,12 +36,12 @@ class OrderType extends AbstractType
                 'expanded' => true,
 
             ])
-            ->add('submit', SubmitType::class, [
-                'label' => 'Valider ma commande', 
-                'attr' => [
-                    'class' => 'btn btn-info btn-sm'
-                ]
-            ])
+            // ->add('submit', SubmitType::class, [
+            //     'label' => 'Valider ma commande', 
+            //     'attr' => [
+            //         'class' => 'btn btn-info btn-sm'
+            //     ]
+            // ])
         ;
     }
 

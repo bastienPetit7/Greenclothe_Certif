@@ -1511,7 +1511,7 @@ h3{
 /* ======================= Page mes commandes ==============================*/
 
 .cont-adresse{
-    width: 500px;
+    width: auto;
     
 
 }
@@ -1539,6 +1539,24 @@ h3{
     padding: 20px;
     margin-top: 10px;
 }
+
+.bouton-valid-commande {
+    background-color: var(--main-orange);
+    color: white;
+}
+
+@media screen and (max-width: 500px){
+
+    .title-account-commande h2{
+        
+        font-size: 16px;
+    }
+
+    .txt-recap-show-commande{
+        font-size: 12px;
+    }
+}
+
 
 
 /* ======================== Page Products Index ================================== */

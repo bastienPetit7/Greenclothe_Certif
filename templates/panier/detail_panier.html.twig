@@ -24,12 +24,12 @@
                 </div>
                 <!-- ============= PANIER ================ -->
 
-            {% if panier | length == 0 %}
-                <div class="w-100 d-flex justify-content-center">
-                    <p class="text-center">Vous n'avez aucun produit dans votre panier pour le moment</p>
-                </div>
+                {% if panier | length == 0 %}
+                    <div class="w-100 d-flex justify-content-center">
+                        <p class="text-center">Vous n'avez aucun produit dans votre panier pour le moment</p>
+                    </div>
 
-            {% else %}
+                {% else %}
                 
                 <!-- --- Titre Panier --- -->
                 <div class="container-fluid">
@@ -141,70 +141,54 @@
 
                     </div>
 
-                <!-- Recap paiement et Tax -->
-                <div class="container-fluid ">
-                    <div class="row pt-4 px-3">
-                        <div class="col-lg-4 offset-lg-8 col-sm-6 offset-sm-6">
+                    <!-- Recap paiement et Tax -->
+                        <div class="container-fluid ">
+                            <div class="row pt-4 px-3">
+                                <div class="col-lg-4 offset-lg-8 col-sm-6 offset-sm-6">
 
-                            
-                            <!-- sous-total -->
-                            <div class="d-flex justify-content-between py-1">
-                                <span class="h6 text-uppercase ml-5">sous-total</span>
-                                <span class="h6 mr-4">{{ total | amount }}</span>
-                            </div>
-                            <!-- frais de port -->
-                            <div class="d-flex justify-content-between py-1">
-                                <span class="h6 text-uppercase ml-5">frais de port</span>
-                                <span class="h6 mr-4">0,00 €</span>
-                            </div>
-                            <!-- total TTC -->
-                            <div class="d-flex justify-content-between py-1">
-                                <span class="h6 perso_orange text-uppercase font-weight-bold ml-5"><strong>total
-                                        ttc</strong></span>
-                                <span class="h6 mr-4 perso_orange"> <strong> {{total | amount}} </strong> </span>
-                            </div>
-                            <div class="d-flex justify-content-center">
-                                <a class="btn btn-danger text-uppercase" href=" {{path('order')}} ">Poursuivre la commande</a>
-                            </div>
-                        </div>
-
-                {% endif %}
-
-                        <!-- ============ Carte Cadeaux =============== -->
-                        <div class="container-fluid  mt-5 ">
-
-                            <div class="row carte-cadeaux-cont py-5 ">
-                                <div class="col-12 text-center px-0">
-                                    <h2 class=" perso_blue_green h5 mb-4 ">vous souhaitez utiliser une carte cadeau?
-                                    </h2>
-                                    <form class="">
-                                        <label for="idCarteCadeau"></label>
-                                        <input type="text" id="idCarteCadeau" placeholder="votre num de carte cadeau"
-                                            class="custom-input-carte-cadeau py-1 mr-3">
-                                        <button class="btn btn-warning btn-sm text-uppercase px-2">ajouter</button>
-                                    </form>
+                                    
+                                    <!-- sous-total -->
+                                    <div class="d-flex justify-content-between py-1">
+                                        <span class="h6 text-uppercase ml-5">sous-total</span>
+                                        <span class="h6 mr-4">{{ total | amount }}</span>
+                                    </div>
+                                    <!-- frais de port -->
+                                    <div class="d-flex justify-content-between py-1">
+                                        <span class="h6 text-uppercase ml-5">frais de port</span>
+                                        <span class="h6 mr-4">0,00 €</span>
+                                    </div>
+                                    <!-- total TTC -->
+                                    <div class="d-flex justify-content-between py-1">
+                                        <span class="h6 perso_orange text-uppercase font-weight-bold ml-5"><strong>total
+                                                ttc</strong></span>
+                                        <span class="h6 mr-4 perso_orange"> <strong> {{total | amount}} </strong> </span>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <a class="btn btn-danger text-uppercase" href=" {{path('order')}} ">Poursuivre la commande</a>
+                                    </div>
                                 </div>
-                            </div>
 
-                        </div>
+                                {% endif %}
 
-                        <!-- ========== Retour Achat ============= -->
-                        <div class="container-fluid">
-                            <div class="row mt-4 mb-4">
-                                <div class="col-3 p-0">
-                                    <a href=" {{path('product_index')}} " class=" text-decoration-none ">
-                                        <div
-                                            class="cont-retour-achat d-flex align-items-center justify-content-center px-2">
-                                            <i class="fas fa-caret-left mr-1 "></i>
-                                            <span class="py-2 font-weight-bold ">Continuer mes achats</span>
+                    
+
+                                <!-- ========== Retour Achat ============= -->
+                                <div class="container-fluid">
+                                    <div class="row mt-4 mb-4">
+                                        <div class="col-3 p-0">
+                                            <a href=" {{path('product_index')}} " class=" text-decoration-none ">
+                                                <div
+                                                    class="cont-retour-achat d-flex align-items-center justify-content-center px-2">
+                                                    <i class="fas fa-caret-left mr-1 "></i>
+                                                    <span class="py-2 font-weight-bold ">Continuer mes achats</span>
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
-
-                    </div>
-                </div>
 
 </Section>
 

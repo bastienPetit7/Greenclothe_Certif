@@ -4,48 +4,90 @@
 
 {% block body %}
 
-    <div class="container mb-5 py-4">
+    <div class="mb-5 py-4 d-md-flex flex-column align-items-center">
 
-      <div class="mb-5">
-        <h2 class="text-center">Ma commande n°{{order.reference}} </h2>
+      <div class="mb-5 title-account-commande">
+        <h2 class="text-md-center ">Ma commande n°{{order.reference}} </h2>
         <a href=" {{path('account_order')}} "> < Retour</a>
       
-    </div>
-    <hr>
-    Commande passée le : {{order.createdAT | date('d/m/Y')}} <br>
-    Référence de ma commande : {{order.reference}} <br>
-    Transporteur choisi : {{order.carrierName}}
+      </div>
+      <hr>
+      <div class="txt-recap-show-commande">
+        Commande passée le : <strong>{{order.createdAT | date('d/m/Y')}} </strong> <br>
+        Référence: <strong> {{order.reference}}</strong> <br>
+        Transporteur: <strong>{{order.carrierName}}</strong>
+      </div>
+      
+      
+      
 
         
+        <div class="row d-block d-md-none">
+          <div class="col-12 mt-3 ">
+              <div class="border border-warning mx-auto p-4 ">
+                  <strong class="text-center font-weight-bold d-block mx-auto mt-2">Ma commande</strong><hr class="perso_bg_orange">
+                    
+                 
+                  {% for product in order.orderDetails %}
+                
+                      <div class="row align-items-center txt-recap-show-commande  ">
+                          {# <div class="col-3">
+                              <img class="img-fluid img-product-panier"src="/assets/ressources/img/uploads/products/{{item.product.image}}" alt="">
+                          </div> #}
+                          <div class="col-6">
+                          <strong>{{product.product}}</strong>  <br>
+                              <small> Taille:  </small><br>
+                              <small>Qty : x {{ product.quantity}}</small>
+                          </div>
+                          <div class="col-6 ">
+                          P.U: {{product.price | amount}} <br>
+                          Total : {{product.total | amount}} 
+                          </div>
+                          
+                      </div>
+                      <hr class="perso_bg_orange">
+                  {% endfor %}
 
-    <table class="table my-5">
-      <thead>
-        <tr>
-          <th scope="col">Produit</th>
-          <th scope="col">Quantité</th>
-          <th class="text-center" scope="col">Prix unitaire</th>
-          <th class="text-right"scope="col">Total</th>
-         
-          {# <th class="text-right" scope="col">Voir ma commande</th> #}
-        </tr>
-      </thead>
-      <tbody>
-            {% for product in order.orderDetails %}
-                    
-                <tr>
-                    <td > <span class="badge badge-warning p-2">{{product.product}}</span> </td>
-                    <td > x {{product.quantity}} </td>
-                    <td class="text-center"> {{product.price | amount}}</td>
-                    <td class="text-right"> {{product.total | amount}} </td>
-                    
-                </tr>
-                            
-            {% endfor %}
-        
-      </tbody>
-    </table>
+              </div>
+          </div>
+        </div>
+
+        <div>
+              <table class="table my-5 d-none d-md-block">
+                <thead>
+                  <tr>
+                    <th scope="col">Produit</th>
+                  
+                
+                    <th scope="col">Quantité</th>
+                
+                
+                    <th class="text-center" scope="col">Prix unitaire</th>
+                
+                
+                    <th class="text-right"scope="col">Total</th>
+                  </tr>
+                  
+                  
+                </thead>
+                <tbody>
+                      {% for product in order.orderDetails %}
+                              
+                          <tr>
+                              <td > <span class="badge badge-warning p-2">{{product.product}}</span> </td>
+                              <td > x {{product.quantity}} </td>
+                              <td class="text-center"> {{product.price | amount}}</td>
+                              <td class="text-right"> {{product.total | amount}} </td>
+                          </tr>
+                              
+                                      
+                      {% endfor %}
+                  
+                </tbody>
+              </table>
+        </div>
    
-    <div class="text-right">
+    <div class="text-right mt-3">
         <strong>Sous total : </strong> {{order.getTotal | amount}} <br> 
         <strong>Livraison : </strong> {{order.carrierPrice | amount}} <br>
         <strong>Total : </strong> {{(order.carrierPrice + order.getTotal) | amount}}
