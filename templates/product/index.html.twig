@@ -33,13 +33,27 @@
 
             <div class="row ">
 
-                <div class="col-12 col-md-3 form-filter  " id="filterForm">
-                    {{form(form)}}
-                </div>
+                
+          
+                    <div class="dropdown-filter d-md-none d-flex justify-content-center w-100 mx-auto">
+                        <i class="fas fa-chevron-right " id="chevronDropFilter"></i>
+                        <h3>Filtrer</h3>
+                    </div>
+
+                    <div class="col-12 col-md-4 form-filter" id="menuFilter">
+                        {{form_start(form)}}
+                        {{form_row(form.string)}}
+                        {{form_row(form.categories)}}
+
+                        <button type="submit" class="btn-submit-filter" id="btnFilter">Filtrer</button>
+                        {{form_end(form)}}
+
+                    </div>
+               
 
             
 
-                <div class="col-12 col-md-9 d-flex justify-content-center align-items-center body-collection mb-5">
+                <div class="col-12 col-md-8 d-flex justify-content-center align-items-center body-collection mb-5">
                     <div class="container-collection">
 
 
@@ -52,29 +66,7 @@
                                     <a href=" {{path('product_show',{'slug': product.slug })}} ">
                                     <div class="img-box">
                                         <img src="/assets/ressources/img/uploads/products/{{product.image}}" alt="{{product.name}}">
-                                        {# <ul class="action">
-                                            <li class="li">
-                                                <a href=" {{ path('product_show',{'slug': product.slug })}}" class="text-dark ">
-                                                    <i class="fa fa-eye" aria-hidden="true"></i>
-                                                    <span>View Details</span>
-                                                </a>
-                                            </li>
-                                            
-                                            <li class="li">
-                                                <a href="{{path('ajouter_panier', {'id' : product.id})}}" class="text-dark ">
-                                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                    <span>Add to cart</span>
-                                                </a>
-                                            </li>
-                                            <li class="li">
-                                                <a href="#" class="text-dark">
-                                                    <i class="fa fa-heart" aria-hidden="true"></i>
-                                                    <span>Add to Wishlist</span>
-                                                </a>
-                                            </li>
-                                            
-                                            
-                                        </ul> #}
+                                     
                                     </div>
                                     <div class="content-card-collection">
                                         <div class="product-name-collection">
@@ -83,13 +75,6 @@
                                         <div class="price-rating">
                                             <h2> {{product.price | amount}} </h2>
                                         
-                                            {# <div class="rating">
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-                                                <i class="fa grey fa-star" aria-hidden="true"></i>
-                                            </div> #}
 
                                         </div>
                                     </div>

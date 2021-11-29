@@ -36,7 +36,7 @@
                           </div> #}
                           <div class="col-6">
                           <strong>{{product.product}}</strong>  <br>
-                              <small> Taille:  </small><br>
+                              <small> Taille: {{product.taille}}  </small><br>
                               <small>Qty : x {{ product.quantity}}</small>
                           </div>
                           <div class="col-6 ">
@@ -57,30 +57,24 @@
                 <thead>
                   <tr>
                     <th scope="col">Produit</th>
-                  
-                
                     <th scope="col">Quantité</th>
-                
-                
+                    <th scope="col">Taille</th>
                     <th class="text-center" scope="col">Prix unitaire</th>
-                
-                
                     <th class="text-right"scope="col">Total</th>
-                  </tr>
-                  
-                  
+                  </tr>       
                 </thead>
                 <tbody>
+
                       {% for product in order.orderDetails %}
                               
-                          <tr>
-                              <td > <span class="badge badge-warning p-2">{{product.product}}</span> </td>
-                              <td > x {{product.quantity}} </td>
-                              <td class="text-center"> {{product.price | amount}}</td>
-                              <td class="text-right"> {{product.total | amount}} </td>
-                          </tr>
-                              
-                                      
+                        <tr>
+                            <td > <span class="badge badge-warning p-2">{{product.product}}</span> </td>
+                            <td > x {{product.quantity}} </td>
+                            <td> {{product.taille}}</td>
+                            <td class="text-center"> {{product.price | amount}}</td>
+                            <td class="text-right"> {{product.total | amount}} </td>
+                        </tr>
+                                          
                       {% endfor %}
                   
                 </tbody>

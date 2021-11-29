@@ -46,15 +46,15 @@
         <div class="row jumbotron">
             <div class="col-4 text-center">
                 <i class="fab fa-pagelines mb-3"></i>
-                <p>Matière écologique</p>
+                <p class="txt-jumbotron">Matière écologique</p>
             </div>
             <div class="col-4 text-center">
                 <i class="fas fa-recycle mb-3"></i>
-                <p>100% recyclable</p>
+                <p class="txt-jumbotron">100% recyclable</p>
             </div>
             <div class="col-4 text-center">
                 <i class="fas fa-dove mb-3"></i>
-                <p>Nous protégeons les oiseaux</p>
+                <p class="txt-jumbotron">Nous protégeons les oiseaux</p>
             </div>
         </div>
     </div>
@@ -69,8 +69,9 @@
                             <h3 class="pl-3 h1">Nos meilleurs ventes</h3>
                     </div>
                 </div>
-                <div class="col-12 d-flex justify-content-center align-items-center body-collection mb-5">
-                            <div class="container-collection">
+                <div class="col-12 d-flex flex-column justify-content-center align-items-center body-collection mb-5">
+                        <div class="container-collection">
+
                             {% for product in products %}
                                 
                                 <!-- Debut carte -->
@@ -79,29 +80,7 @@
                                         <a href=" {{path('product_show',{'slug': product.slug })}} ">
                                         <div class="img-box">
                                             <img src="/assets/ressources/img/uploads/products/{{product.image}}" alt="{{product.name}}">
-                                            {# <ul class="action">
-                                                <li class="li">
-                                                    <a href=" {{ path('product_show',{'slug': product.slug })}}" class="text-dark ">
-                                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                                        <span>View Details</span>
-                                                    </a>
-                                                </li>
-                                                
-                                                <li class="li">
-                                                    <a href="{{path('ajouter_panier', {'id' : product.id})}}" class="text-dark ">
-                                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                                                        <span>Add to cart</span>
-                                                    </a>
-                                                </li>
-                                                <li class="li">
-                                                    <a href="#" class="text-dark">
-                                                        <i class="fa fa-heart" aria-hidden="true"></i>
-                                                        <span>Add to Wishlist</span>
-                                                    </a>
-                                                </li>
-                                                
-                                                
-                                            </ul> #}
+                                        
                                         </div>
                                         <div class="content-card-collection">
                                             <div class="product-name-collection">
@@ -110,13 +89,7 @@
                                             <div class="price-rating">
                                                 <h2> {{product.price | amount}} </h2>
                                             
-                                                {# <div class="rating">
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-                                                    <i class="fa grey fa-star" aria-hidden="true"></i>
-                                                </div> #}
+                        
 
                                             </div>
                                         </div>
@@ -127,8 +100,8 @@
                             {% endfor %}
 
 
-
-                    </div>
+                        </div>
+                        <a href="{{path('product_index')}}" class="btn btn-warning btn-lg py-md-3 px-md-5">>> Accéder à la boutique <<</a>
                 </div>
             
             </div>
@@ -146,29 +119,23 @@
                     <p class="sous-titre-story-telling">Nous vous faisons CONFIANCE pour nous faire CONFIANCE !</p>
                 </div>
             </div>
-            <div class="row text-center px-3 mt-5">
+            <div class="row story-telling-container text-center px-3 mt-5">
                 <div class="col-md-4 col-12">
                     <i class="fab fa-pagelines fa-big mb-5 "></i>
                     <h3 class="text-white">Matière écologique</h3>
-                    <p class="text-white line-height-plus">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quaerat
-                        maxime est voluptatum animi. Earum quos aliquid quo, voluptatem nostrum odit cumque laudantium
-                        quisquam natus?</p>
+                    <p class="text-white line-height-plus">Chez Greenclothe, nous mettons l’accent sur le choix des matières premières utilisées afin de vous proposer les meilleurs vêtements écologiques sur notre e-shop. Nous sélectionnons exclusivement des matériaux écologiques, issus de l’agriculture durable ou du recyclage, conçus pour durer, dans le respect de la nature et des hommes.</p>
 
                 </div>
                 <div class="col-md-4 col-12">
                     <i class="fas fa-recycle fa-big mb-5"></i>
                     <h3 class="text-white">100% recyclable</h3>
-                    <p class="text-white line-height-plus">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quaerat
-                        maxime est voluptatum animi. Earum quos aliquid quo, voluptatem nostrum odit cumque laudantium
-                        quisquam natus?</p>
+                    <p class="text-white line-height-plus">Un vêtement recyclé est un vêtement qui a été fabriqué entièrement ou partiellement avec une matière déjà existante. Cette matière peut avoir été simplement récupérée et utilisée comme telle ou bien broyée pour être transformée en fibre puis retissée par la suite. Greenclothe met un point d'honneur à utiliser un maximum de matières recyclées.</p>
 
                 </div>
                 <div class="col-md-4 col-12">
                     <i class="fas fa-dove fa-big mb-5"></i>
                     <h3 class="text-white">Nous protégeons les oiseaux</h3>
-                    <p class="text-white line-height-plus">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur quaerat
-                        maxime est voluptatum animi. Earum quos aliquid quo, voluptatem nostrum odit cumque laudantium
-                        quisquam natus?</p>
+                    <p class="text-white line-height-plus">Nous pouvons tous agir pour protéger la nature d’une façon ou d’une autre. Pour chaque commande Greenclothe fait un don à la LPO, pour soutenir les actions d’intérêt général de l’association dans leur ensemble, ou pour soutenir des programmes en particulier selon le souhait de l’entreprise et les besoins de la LPO.</p>
 
                 </div>
             </div>

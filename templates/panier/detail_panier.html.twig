@@ -114,12 +114,12 @@
                                 <!-- Select Quantite -->
                                 <div class=" col-12 col-md-3 d-md-flex align-items-md-center p-0 mb-3">
                                     
-                                    <div class="row taille-option p-1">
+                                    <div class="row taille-option no-gutters p-1">
                                         <div class="col-12 col-md-4 mb-md-0 mb-3 text-nowrap d-flex justify-content-center align-items-center">
                                             <strong class="text-uppercase prix-quantité-card mb-2 "> <span class="prix-sous-total-title text-lowercase d-md-none">prix : </span> {{ item.product.price | amount  }}</strong>
                                         </div>
-                                        
-
+                                    </div>    
+                                    <div class="row taille-option no-gutters p-1">
                                         <div class=" col-12 col-md-8 d-flex justify-content-center justify-content-md-start   select-box-component mb-1 ">
 
                                             <a class="text-dark btn btn-sm btn-light mr-2 mr-md-1 d-flex align-items-center" href="{{ path('panier_diminuer_article',{'id': item.product.id , 'taille' : item.taille}) }}"> - </a>

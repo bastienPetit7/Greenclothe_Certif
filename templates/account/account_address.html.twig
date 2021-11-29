@@ -19,13 +19,13 @@
     {% else %}
             
 
-        <div class="adresses">
+        <div class="adresses ">
 
 
             <div class="row ">
 
                 <div class="col-md-6 mes-adresses">
-                    <div class=" mb-5">
+                    
     
                         <h2 class="perso-red perso_font_bold h3">Adresses par défaut</h2>
 
@@ -47,7 +47,7 @@
                         {% endfor %}
 
     
-                    </div>
+                    
                     
     
                    
@@ -74,7 +74,7 @@
     
             </div>
                 
-            <div class="row">
+            <div class="row mt-4">
                 <div class=" d-flex col-12 box-content  justify-content-between "> 
     
                     <div class="ml-2">
@@ -86,8 +86,9 @@
                         </a>
                     </div>
                    
-                    <div class="mr-4">
-                        <a  href="{{path('account_create_address')}}" class="btn btn-danger text-uppercase text-white rounded-pill  ">ajouter une nouvelle adresse</a >
+                    <div class="">
+                        <a  href="{{path('account_create_address')}}" class="d-none d-md-block btn btn-danger btn-sm text-uppercase text-white rounded-pill  ">ajouter une nouvelle adresse</a >
+                        <a  href="{{path('account_create_address')}}" class="d-block d-md-none btn btn-link btn-sm text-primary  ">ajouter une nouvelle adresse</a >
                     </div>
     
                 </div>   

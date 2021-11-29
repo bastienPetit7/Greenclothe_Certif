@@ -49,7 +49,7 @@ class CartController extends AbstractController
 
         $categoryId = $getId[1]["category_id"];      
         
-        $this->addFlash('success', 'Le produit a bien été ajouté à votre panier');
+        $this->addFlash('success', 'Le produit a bien été ajouté à votre panier ');
 
         return $this->redirectToRoute('category_show',[
             'id' => $categoryId

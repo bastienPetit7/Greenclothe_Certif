@@ -22,7 +22,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
                 'required' => false, 
                 'attr' => [
                     'placeholder' => 'Rechercher un article', 
-                    'class' => 'form-control-sm'
+                    'class' => ''
                 ]
             ])
 
@@ -35,12 +35,13 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
                 
             ])
 
-            ->add('submit', SubmitType::class, [
-                'label' => 'Filtrer',
-                'attr' => [
-                    'class' => 'btn-submit-filter'
-                ]
-            ])
+            // ->add('submit', SubmitType::class, [
+            //     'label' => 'Filtrer',
+            //     'attr' => [
+            //         'class' => 'btn-submit-filter',
+            //         'id' => 'btnFilter'
+            //     ]
+            // ])
 
 
         ;

@@ -4,7 +4,7 @@
 
 {% block body %}
 
-  <div class="row mb-5 py-4">
+  <div class="mb-5 p-md-5 d-md-flex flex-column align-items-center">
 
         <div class="mb-5">
           <h2 class="text-center">Mes commandes</h2>
@@ -17,15 +17,15 @@
 
         {% if orders | length == 0 %}
         <hr>
-        <p class="text-center">
-            Vous n'avez pas encore passé de commande chez Greenclothe
-        
-        </p>
+          <p class="text-center">
+              Vous n'avez pas encore passé de commande chez Greenclothe
+          
+          </p>
         
         {% else %}
 
             
-      <table class="table my-5">
+      <table class="table my-5 ">
         <thead>
           <tr>
             <th scope="col">Référence</th>

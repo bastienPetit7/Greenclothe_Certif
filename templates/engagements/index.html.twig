@@ -1,0 +1,112 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Nos engagements{% endblock %}
+
+{% block body %}
+
+   
+
+    
+
+    <div class="bg-img-top-engagement ">
+    
+        <div class="img-bandeau-engagement" style="background-image: url('{{asset('assets/ressources/img/lucas-hoang-ojZ4wJNUM5w-unsplash.jpg')}}');"></div>
+        <div class="bandeau-engagement-overlay"></div>
+
+
+    
+        <div class="d-flex flex-column align-items-center justify-content-center txt-bandeau-engagement">
+        
+            <div class="content-txt-engagement d-flex flex-column align-items-center text-white">
+            
+                <h1 class="punch-line-bandeau-engagement">L'engagement Greenclothe</h1>
+                <p>Greenclothe est une marque éco-responsable de vêtements et accessoires pour homme et femme, fabriqués à moins de 1000 kms de chez vous, qui contribue à la protection des oiseaux.</p>
+            
+                <a href="{{path('product_index')}}" class="btn btn-warning">Voir les produits</a>
+                
+            </div>
+
+        </div>
+
+    
+    
+    </div>
+
+    <div class="container-fluid mt-5">
+        <div class="row">
+        
+            <div class="col-md-6">
+                <h3 class="marque-engage-title"> Une marque engagée</h3>
+                <img class="img-nos-engagements img-fluid" src="{{asset('assets/ressources/img/sharon-mccutcheon-TAZUc51iPUM-unsplash.jpg')}} " alt="Photo de création de vêtements">
+            </div>
+
+
+
+            <div class="col-md-6 my-md-auto mt-4 d-flex justify-content-center ">
+                <div class="marque-engage-txt">
+                    <p>La mode opère à l'heure actuelle un virage éthique et écologique sans précédent. Peu présente il y a quelques années pourtant, la question de la mode "green" est désormais sur toutes les lèvres : Greenclothe délaissent la fourrure animale et agit en pleine conscience en réalisant des collections capsule éco-responsables et tente de réconcilier prêt-à-porter désirable et fabrication responsable.</p>
+                </div>
+            </div>
+        
+        </div>
+        <div class="trois-points-container w-100 d-flex justify-content-center mt-4">
+        
+            <div class="trois-points-container-content p-3 mt-md-4 d-flex flex-column align-items-center">
+                <h3 class="trois-points-engagements-title">Nous nous engageons sur trois points essentiels à nos yeux</h3>
+
+                <p class="trois-points-engagements-txt mt-3">Des pièces streetwear et vitaminées, confectionnées à partir de matières biologiques ou naturelles. Parmi elles, on compte les fibres de bananes, les fleurs séchées, le cuir à tannage végétal ou encore les bouteilles en plastique recyclées</p>
+            </div>
+             
+        </div>
+
+        <div class="les-points-container w-100 d-flex flex-column align-items-center pb-5">
+            <div class="row points-engagements-container text-center px-3 mt-5">
+                    <div class="col-md-4 col-12">
+                        <i class="fab fa-pagelines fa-engagement mb-5 "></i>
+                        <h3 class="">Matière écologique</h3>
+                        <p class=" para-point-engagement">Chez Greenclothe, nous mettons l’accent sur le choix des matières premières utilisées afin de vous proposer les meilleurs vêtements écologiques sur notre e-shop. Nous sélectionnons exclusivement des matériaux écologiques, issus de l’agriculture durable ou du recyclage, conçus pour durer, dans le respect de la nature et des hommes.</p>
+
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <i class="fas fa-recycle fa-engagement mb-5"></i>
+                        <h3 class="">100% recyclable</h3>
+                        <p class=" para-point-engagement"> Un vêtement recyclé est un vêtement qui a été fabriqué entièrement ou partiellement avec une matière déjà existante. Cette matière peut avoir été simplement récupérée et utilisée comme telle ou bien broyée pour être transformée en fibre puis retissée par la suite. Greenclothe met un point d'honneur à utiliser un maximum de matières recyclées.</p>
+
+                    </div>
+                    <div class="col-md-4 col-12">
+                        <i class="fas fa-dove fa-engagement mb-5"></i>
+                        <h3 class="">Nous protégeons les oiseaux</h3>
+                        <p class=" para-point-engagement">Nous pouvons tous agir pour protéger la nature d’une façon ou d’une autre. Pour chaque commande Greenclothe fait un don à la LPO, pour soutenir les actions d’intérêt général de l’association dans leur ensemble, ou pour soutenir des programmes en particulier selon le souhait de l’entreprise et les besoins de la LPO</p>
+
+                    </div>
+            </div>
+        </div>
+
+        <div class="row my-5 pb-5">
+
+            <div class="col-md-6  d-flex justify-content-center ">
+                <div class="marque-engage-txt">
+                    <h2 class="marque-engage-title mb-3">Rejoignez le mouvement Greenclothe...</h2>
+                    <p>Les changements climatiques et sociétaux ont fait basculer la vision du monde et de ses limites. Plus personne ne peut ignorer l’impact de sa consommation. Le monde a plongé dans l’anthropocène – nouvelle ère géologique dans laquelle l’Homme a acquis une telle influence sur la biosphère qu’il en est devenu l’acteur central. Avec pour conséquences des espèces qui s’éteignent à jamais, des forêts qui mettront des siècles à repousser, des désastres climatiques inévitables, des continents de déchets dont on ignore comment se débarrasser… Greenclothe s'engage, rejoignez nous...</p>
+                </div>
+            </div>
+
+             <div class="col-md-6 mt-4">
+                
+                <img class="img-nos-engagements img-fluid" src="{{asset('assets/ressources/img/philippe-oursel-RmQTZJWjoWA-unsplash.jpg')}} " alt="Photo d'une barque en mouvement">
+            </div>
+        
+        </div>
+
+    </div>
+
+
+    
+    
+    
+ 
+
+
+
+
+{% endblock %}

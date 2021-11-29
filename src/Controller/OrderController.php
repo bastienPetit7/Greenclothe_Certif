@@ -103,10 +103,12 @@ class OrderController extends AbstractController
             // Enregistrer mes produits => OrderDetails
            foreach($panierService->detaillerLeContenu() as $product)
            {
+        
                $orderDetails = new OrderDetails; 
                $orderDetails->setMyOrder($order);
                $orderDetails->setProduct($product->product->getName()); 
                $orderDetails->setQuantity($product->qty); 
+               $orderDetails->setTaille($product->taille);
                $orderDetails->setPrice($product->product->getPrice()); 
                $orderDetails->setTotal($product->product->getPrice() * $product->qty); 
                
